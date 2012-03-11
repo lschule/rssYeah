@@ -1,4 +1,5 @@
 RssYeah::Application.routes.draw do
+  root :to => 'user_sessions#new'
   resources :users, :user_sessions
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
@@ -6,7 +7,6 @@ RssYeah::Application.routes.draw do
   resources :articles
   
   resources :smart_categories
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
