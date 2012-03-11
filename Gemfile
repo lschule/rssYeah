@@ -39,3 +39,5 @@ gem 'jquery-rails'
 # gem 'ruby-debug'
 gem "feedzirra"
 gem "authlogic"
+gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'less-rails'
