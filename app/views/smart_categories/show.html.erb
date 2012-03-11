@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @smart_category.name %>
+</p>
+
+<p>
+  <b>Query:</b>
+  <%= @smart_category.query %>
+</p>
+
+
+<%= link_to 'Edit', edit_smart_category_path(@smart_category) %> |
+<%= link_to 'Back', smart_categories_path %>
