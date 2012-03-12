@@ -1,16 +1,18 @@
 <!-- Main hero unit for a primary marketing message or call to action -->
     <div class="row"> 
 		<div class="span8">
-	<div class="hero-unit">
+	<div id="home-slogan" class="hero-unit well">
        <h1>rssYeah!</h1>
        <p>This is a free online rss feed aggregator that helps you stay informed about the latest work produced in your field.</p>
      </div>
 	
 	</div>
 	<div class="span4 ">
-		<div class="well">
 			<%= render 'form' %>
-		</div>
+			<div id="sign-up" class="well">
+			<span>New to rssYeah ? </span>
+			<%= button_to "Sign up now", 'users/new', :method => "get", :class => "btn btn-large btn-warning" %>
+			</div>
 	</div>
 	</div>
      <!-- Example row of columns -->

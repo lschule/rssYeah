@@ -1,33 +1,28 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<% if @user.errors.any? %>
+	<div class="alert alert-block">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <h4 class="alert-heading">Oooops</h4>
+	  <% @user.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+	</div>
+<% end %>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="control-group">
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, :placeholder => "Username", :class => "span3 bottom-10px" %>
   </div>
   <div class="control-group">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :placeholder => "Email", :class => "span3 bottom-10px" %>
   </div>
   <div class="control-group">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :placeholder => "Password", :class => "span3 bottom-10px" %>
   </div>
   <div class="control-group">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, :placeholder => "Confirm your password", :class => "span3 bottom-10px" %>
     </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Sign up', :class => 'btn btn-primary btn-large' %>
   </div>
 <% end %>
