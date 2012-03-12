@@ -9,15 +9,7 @@
 	</div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field  :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit("Login") %>
-  </div>
+    <%= f.text_field :username, :placeholder => "Username or email", :class => "text-input email-input span3" %>
+<%= f.password_field  :password, :placeholder => "Password", :class => "text-input span3"  %>
+<%= f.submit 'Sign in', :class => 'btn primary-btn' %>
 <% end %>

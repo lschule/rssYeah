@@ -1,9 +1,11 @@
 RssYeah::Application.routes.draw do
+  get "static/index"
+
   root :to => 'user_sessions#new'
   resources :users, :user_sessions
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
-
+ 
   resources :articles
   
   resources :smart_categories

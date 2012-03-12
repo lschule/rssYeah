@@ -65,6 +65,7 @@ GEM
       rake (>= 0.9.2)
       rdoc (~> 3.8)
       sax-machine (~> 0.0.20)
+    high_voltage (1.1.1)
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.3)
@@ -145,6 +146,7 @@ DEPENDENCIES
   authlogic
   coffee-rails (~> 3.2.1)
   feedzirra
+  high_voltage
   jquery-rails
   json
   less-rails
