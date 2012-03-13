@@ -19,6 +19,14 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+  
+  gem 'twitter-bootstrap-rails'
+
+  gem 'less-rails'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
@@ -37,8 +45,10 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug'
+
+# use thin as webserver
+
+
 gem "feedzirra"
 gem "authlogic"
-gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'less-rails'
 gem "high_voltage"
