@@ -5,8 +5,6 @@ gem 'rails', '3.2.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 gem 'json'
 
 # Gems used only for assets and not required
@@ -25,6 +23,9 @@ group :assets do
   gem 'less-rails'
 end
 
+group :development do
+  gem 'sqlite3'
+end
 group :production do
   gem 'pg'
 end
@@ -47,7 +48,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug'
 
 # use thin as webserver
-
+gem 'thin'
 
 gem "feedzirra"
 gem "authlogic"
