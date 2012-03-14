@@ -22,17 +22,6 @@
   </head>
   <body>
     <div class="container">
-	
-			<% if current_user %>
-						<div class="btn-group pull-right">
-
-						<button id="logged-in-button" class="btn btn-info btn-large dropdown-toggle"><i class="icon-user"></i> Logged in as	<%= current_user.username %> <span class="caret"></span></button>
-						  <ul class="dropdown-menu">
-						    	<li><a href="/logout">Logout</a></li>
-			                    <li><%= link_to 'Profile', edit_user_path(current_user) %></li>
-						  </ul>
-						</div>
-		<% end %>
 		<%= render :template => 'pages/header' %>
 		<% if flash[:alert] %>
 			<div class="alert alert-error">

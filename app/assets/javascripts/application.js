@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$("body").bind("click", function (e) {
+$('.dropdown-toggle, .menu').parent("div").removeClass("open");
+});
+$(".dropdown-toggle, .menu").click(function (e) {
+var $div = $(this).parent("div").toggleClass('open');
+return false;
+});
