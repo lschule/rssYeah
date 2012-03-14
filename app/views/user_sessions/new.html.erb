@@ -8,11 +8,13 @@
 	
 	</div>
 	<div class="span4 ">
+		<% if !current_user %>
 			<%= render 'form' %>
 			<div id="sign-up" class="well">
 			<span>New to rssYeah ? </span>
 			<%= button_to "Sign up now", 'users/new', :method => "get", :class => "btn btn-large btn-warning" %>
 			</div>
+		<% end %>
 	</div>
 	</div>
      <!-- Example row of columns -->
