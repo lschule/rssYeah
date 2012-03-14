@@ -55,9 +55,10 @@
 }
 
 #go-home{
+	color:#333;
 	text-decoration:none;
 }
 
-#go-home:hover h1{
+#go-home:hover{
 	color:#08C;
 }
