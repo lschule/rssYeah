@@ -1,7 +1,14 @@
 class Article < ActiveRecord::Base
   def self.load_fixture()
     update_from_feed("http://rsbl.royalsocietypublishing.org/rss/current.xml");
-  end  
+  end
+  
+  def self.load_all_feeds()
+    Feed.all.each do |feed|
+      update_from_feed(feed.url);      
+    end
+  end
+  
   def self.update_from_feed(feed_url)
       feed = Feedzirra::Feed.fetch_and_parse(feed_url)
       add_entries(feed.entries)

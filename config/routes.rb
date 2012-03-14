@@ -1,4 +1,6 @@
 RssYeah::Application.routes.draw do
+  resources :feeds
+
   get "static/index"
 
   root :to => 'user_sessions#new'
