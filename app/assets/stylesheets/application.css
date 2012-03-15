@@ -62,3 +62,14 @@
 #go-home:hover{
 	color:#08C;
 }
+
+.article-actions {
+	font-size:24px;
+	color:#49AFCD;
+	height: 29px;
+	float:left;
+}
+.article-actions i{
+	margin-right:10px;
+	line-height:29px;
+}
