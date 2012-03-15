@@ -15,7 +15,7 @@
     <td><%= feed.url %></td>
     <td><%= link_to 'Show', feed %></td>
     <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-    <td><%= link_to 'Destroy', feed, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', feed, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
