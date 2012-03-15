@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.find( :all, :order => "published_at" )
+    @articles = Article.find( :all, :include => :feed, :order => "published_at" )
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,8 +1,9 @@
 <h1>Articles</h1>
+
     <% @articles.each do |article| %>
       <div id="<%= article.name %>">
         <h2><%= article.name %> <small><%= link_to article.url, article.url %></small></h2>
-        <small><%= article.published_at.try(:strftime,'%d %b %Y') %></small> &mdash; <em><%= article.feed.name %></em>
+        <small><%= article.published_at.try(:strftime,'%d %b %Y') %></small> &mdash; <em><%= article.feed_name %></em>
         <p><%= raw article.summary  %></p>
 	  </div>
     <% end %>
