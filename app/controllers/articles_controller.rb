@@ -1,9 +1,10 @@
 class ArticlesController < ApplicationController
+  before_filter :confirm_logged_in
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.find( :all, :include => :feed, :order => "published_at" )
-
+    @articles = Article.includes(:feed, :user_articles).where("`user_articles`.user_id = ?", current_user.id)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @articles }
@@ -79,5 +80,22 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url }
       format.json { head :no_content }
     end
+  end  
+  
+  def toggle_heart
+    @user_articles = UserArticle.find_by_user_id_and_article_id(current_user.id,params[:id])
+    @user_articles.update_attributes({:heart => !@user_articles.heart})
+    respond_to do |format|
+      format.json { head :ok }
+    end
   end
+  
+  def mark_read
+    @user_articles = UserArticle.find_by_user_id_and_article_id(current_user.id,params[:id])
+    @user_articles.update_attributes({:read => 1})
+    respond_to do |format|
+      format.json { head :ok }
+    end
+  end
+  
 end

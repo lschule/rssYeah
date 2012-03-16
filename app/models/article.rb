@@ -5,5 +5,5 @@ class Article < ActiveRecord::Base
   
   def feed_name
     feed.name if feed
-  end
+  end  
 end

@@ -3,7 +3,6 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @feeds }
@@ -78,6 +77,19 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to feeds_url }
+      format.json { head :no_content }
+    end
+  end
+  
+  def add_feed_for_current_user
+    @feed = Feed.find(params[:id])
+    unless @feed.users.include?(current_user)
+        @feed.users << current_user
+        current_user.articles << @feed.articles
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to articles_url }
       format.json { head :no_content }
     end
   end

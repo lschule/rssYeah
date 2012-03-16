@@ -1,14 +1,16 @@
 
     <% @articles.each do |article| %>			
-      	<div class="article-header" id="<%= article.id %>_header" data-toggle="collapse" data-target="#<%= article.id %>">
+      <div class="article row <%= is_read(article.id,current_user.id) %>">	
+		<div class="article-header" id="<%= article.id %>_header" >
        		<div class="article-actions">
-				<i class="icon-star-empty"></i><i class="icon-heart-empty"></i>
+				<i id="heart_<%= article.id %>" class="<%= is_hearted(article.id,current_user.id) %> heart"></i>
 			</div>
-			<h3><%= article.name %><small><%= article.feed_name %></small></h3>
+			<h3 id="title_<%= article.id %>" class="article-title" data-toggle="collapse" data-target="#<%= article.id %>"><%= article.name %>&nbsp;<small><%= article.feed_name %></small></h3>
 		</div>
 		<div class="collapse article-content" id="<%= article.id %>">
 			<small><%= link_to article.url, article.url %></small>
        		<small><%= article.published_at.try(:strftime,'%d %b %Y') %></small>
 			<%= raw article.summary  %>
 		</div>
+	</div>
     <% end %>

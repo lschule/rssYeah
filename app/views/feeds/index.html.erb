@@ -1,25 +1,17 @@
-<h1>Listing feeds</h1>
+<h2>We currently have the following feeds</h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
 
 <% @feeds.each do |feed| %>
-  <tr>
-    <td><%= feed.name %></td>
-    <td><%= feed.url %></td>
-    <td><%= link_to 'Show', feed %></td>
-    <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-    <td><%= link_to 'Destroy', feed, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div class="row">
+	<div class="span9">
+	<h3><%= feed.name %>&nbsp;<small><%= feed.url %></small></h3>
+	</div>
+	<div class="span3">
+		<% if current_user %>
+    		<%= link_to 'Add this Feed', add_feed_for_current_user_feed_path(feed) ,:class => 'btn btn-primary' %>		<% end %>
+	</div>
+</div>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Feed', new_feed_path %>
+<%= link_to 'New Feed', new_feed_path, :class => 'btn btn-primary' %>

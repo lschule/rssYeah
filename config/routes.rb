@@ -1,8 +1,11 @@
 RssYeah::Application.routes.draw do
   resources :user_articles
 
-  resources :feeds
-
+  resources :feeds do
+    member do
+      get :add_feed_for_current_user
+    end
+  end
   get "static/index"
 
   root :to => 'user_sessions#new'
@@ -10,7 +13,13 @@ RssYeah::Application.routes.draw do
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
  
-  resources :articles
+  resources :articles do
+   member do
+      get :toggle_heart
+      get :mark_read
+    end
+  end
+  
   
   resources :smart_categories
   # The priority is based upon order of creation:
