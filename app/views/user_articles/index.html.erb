@@ -1,0 +1,29 @@
+<h1>Listing user_articles</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Article</th>
+    <th>Read</th>
+    <th>Heart</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_articles.each do |user_article| %>
+  <tr>
+    <td><%= user_article.user_id %></td>
+    <td><%= user_article.article_id %></td>
+    <td><%= user_article.read %></td>
+    <td><%= user_article.heart %></td>
+    <td><%= link_to 'Show', user_article %></td>
+    <td><%= link_to 'Edit', edit_user_article_path(user_article) %></td>
+    <td><%= link_to 'Destroy', user_article, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User article', new_user_article_path %>

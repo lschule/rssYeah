@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @user_article.user_id %>
+</p>
+
+<p>
+  <b>Article:</b>
+  <%= @user_article.article_id %>
+</p>
+
+<p>
+  <b>Read:</b>
+  <%= @user_article.read %>
+</p>
+
+<p>
+  <b>Heart:</b>
+  <%= @user_article.heart %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_article_path(@user_article) %> |
+<%= link_to 'Back', user_articles_path %>

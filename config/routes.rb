@@ -1,4 +1,6 @@
 RssYeah::Application.routes.draw do
+  resources :user_articles
+
   resources :feeds
 
   get "static/index"
