@@ -5,7 +5,6 @@
   </p>
 <% end %>
 
-
     <% @articles.each do |article| %>			
       <div class="article row <%= is_read(article.id,current_user.id) %>" data-article-id="<%= article.id  %>">	
 		<div class="article-header" id="<%= article.id %>_header" >
@@ -21,3 +20,7 @@
 		</div>
 	</div>
     <% end %>
+
+<%= paginate @articles %>
+
+

@@ -56,3 +56,6 @@ gem "high_voltage"
 
 # elasticsearch
 gem 'tire'
+# pagination
+#gem 'will_paginate'
+gem 'kaminari'

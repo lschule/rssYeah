@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.includes(:feed, :user_articles).where("`user_articles`.user_id = ?", current_user.id)
+    @articles = Article.includes(:feed, :user_articles).where("`user_articles`.user_id = ?", current_user.id).page(params[:page]).per(10)
     
     #@articles = Article.search(params)
     
