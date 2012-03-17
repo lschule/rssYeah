@@ -14,6 +14,12 @@
 			<span>New to rssYeah ? </span>
 			<%= button_to "Sign up now", 'users/new', :method => "get", :class => "btn btn-large btn-warning" %>
 			</div>
+		<% else %>
+			
+			<form action="articles" class="button_to" method="get">
+					<button class="btn btn-large btn-primary" id="go-to-articles"><b>Go to your articles</b>&nbsp;&nbsp;<i class='icon-arrow-right'></i>
+					</button>
+			</form>
 		<% end %>
 	</div>
 	</div>
