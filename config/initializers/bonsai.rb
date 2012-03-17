@@ -1,7 +1,11 @@
+ENV['BONSAI_INDEX_URL'] = 'http://index.bonsai.io/llxopvypuzll59mxpywx'
+
 if ENV['BONSAI_INDEX_URL'].present? then
 
+  BONSAI_INDEX_NAME = ENV['BONSAI_INDEX_URL'].split('/')[-1]
+
   Tire.configure do
-    url ENV['BONSAI_INDEX_URL']
+    url 'http://index.bonsai.io/'
   end
 
   # monkey patch index_name
@@ -12,7 +16,7 @@ if ENV['BONSAI_INDEX_URL'].present? then
       module Naming
         module ClassMethods
           def index_name name=nil, &block
-            @index_name = ''
+            @index_name = BONSAI_INDEX_NAME
             @index_name
           end
         end
