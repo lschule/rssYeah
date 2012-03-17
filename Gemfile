@@ -55,7 +55,8 @@ gem "authlogic"
 gem "high_voltage"
 
 # elasticsearch
-gem 'tire'
+gem 'tire', '~> 0.4.0.pre'
+
 # pagination
 #gem 'will_paginate'
 gem 'kaminari'

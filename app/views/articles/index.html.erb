@@ -5,6 +5,22 @@
   </p>
 <% end %>
 
+<div id="facets">
+  <h3>Feeds (Faceted Search)</h3>
+  <ul>
+    <% @articles.facets['feeds']['terms'].each do |facet| %>
+      <li>
+        <%= link_to_unless_current Feed.find(facet['term']).name, params.merge(feed_id: facet['term']) %>
+        <% if params[:feed_id] == facet['term'].to_s %>
+          (<%= link_to "remove", feed_id: nil %>)
+        <% else %>
+          (<%= facet['count'] %>)
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
     <% @articles.each do |article| %>			
       <div class="article row <%= is_read(article.id,current_user.id) %>" data-article-id="<%= article.id  %>">	
 		<div class="article-header" id="<%= article.id %>_header" >

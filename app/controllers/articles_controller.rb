@@ -3,9 +3,10 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.includes(:feed, :user_articles).where("`user_articles`.user_id = ?", current_user.id).page(params[:page]).per(10)
-    
-    #@articles = Article.search(params)
+    #@articles = Article.includes(:feed, :user_articles).where("`user_articles`.user_id = ?", current_user.id).page(params[:page]).per(10)
+  
+    params[:user_feeds] = current_user.feeds.collect { |item| item.id }
+    @articles = Article.search(params)
     
     respond_to do |format|
       format.html # index.html.erb
