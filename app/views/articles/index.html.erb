@@ -1,6 +1,13 @@
+<%= form_tag articles_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
 
     <% @articles.each do |article| %>			
-      <div class="article row <%= is_read(article.id,current_user.id) %>">	
+      <div class="article row <%= is_read(article.id,current_user.id) %>" data-article-id="<%= article.id  %>">	
 		<div class="article-header" id="<%= article.id %>_header" >
        		<div class="article-actions">
 				<i id="heart_<%= article.id %>" class="<%= is_hearted(article.id,current_user.id) %> heart"></i>

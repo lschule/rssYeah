@@ -5,6 +5,8 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.includes(:feed, :user_articles).where("`user_articles`.user_id = ?", current_user.id)
     
+    #@articles = Article.search(params)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @articles }

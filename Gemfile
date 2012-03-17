@@ -53,3 +53,6 @@ gem 'thin'
 gem "feedzirra"
 gem "authlogic"
 gem "high_voltage"
+
+# elasticsearch
+gem 'tire'
