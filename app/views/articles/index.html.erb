@@ -1,28 +1,32 @@
-<%= form_tag articles_path, method: :get do %>
-  <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
-<% end %>
-
-<div id="facets">
-  <h3>Feeds (Faceted Search)</h3>
-  <ul>
-    <% @articles.facets['feeds']['terms'].each do |facet| %>
-      <li>
-        <%= link_to_unless_current Feed.find(facet['term']).name, params.merge(feed_id: facet['term']) %>
-        <% if params[:feed_id] == facet['term'].to_s %>
-          (<%= link_to "remove", feed_id: nil %>)
-        <% else %>
-          (<%= facet['count'] %>)
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+<div id="article-top-box" class="well">
+	<a href="feeds" class="btn btn-primary pull-right"><i class='icon-plus'></i>&nbsp;<b>Add feeds</b></a>
+	<%= form_tag articles_path, method: :get do %>
+	  <p>
+	    <%= text_field_tag :query, params[:query] %>
+	    <%= submit_tag "Search", name: nil %>
+	  </p>
+	<% end %>
 </div>
 
+<% unless @articles.length == 0 %>
+	<div id="facets">
+	  <h3>Feeds (Faceted Search)</h3>
+	  <ul>
+	    <% @articles.facets['feeds']['terms'].each do |facet| %>
+	      <li>
+	        <%= link_to_unless_current Feed.find(facet['term']).name, params.merge(feed_id: facet['term']) %>
+	        <% if params[:feed_id] == facet['term'].to_s %>
+	          (<%= link_to "remove", feed_id: nil %>)
+	        <% else %>
+	          (<%= facet['count'] %>)
+	        <% end %>
+	      </li>
+	    <% end %>
+	  </ul>
+	</div>
+	<div class="article-container">
     <% @articles.each do |article| %>			
-      <div class="article row <%= is_read(article.id,current_user.id) %>" data-article-id="<%= article.id  %>">	
+      <div class="article <%= is_read(article.id,current_user.id) %>" data-article-id="<%= article.id  %>">	
 		<div class="article-header" id="<%= article.id %>_header" >
        		<div class="article-actions">
 				<i id="heart_<%= article.id %>" class="<%= is_hearted(article.id,current_user.id) %> heart"></i>
@@ -34,9 +38,12 @@
        		<small><%= article.published_at.try(:strftime,'%d %b %Y') %></small>
 			<%= raw article.summary  %>
 		</div>
+	  </div>
+	<% end %>
 	</div>
-    <% end %>
+	 <%= paginate @articles %>
+<% else %>
+<i class='icon-exclamation-sign pull-left' style="font-size:46px;"></i>
+<h2 style="line-height:34px;padding-left:40px">Seems like you haven't added any feeds yet. Add feeds and enjoy the read!</h2>
 
-<%= paginate @articles %>
-
-
+<% end %>
