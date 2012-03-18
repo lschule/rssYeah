@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20120316082435) do
 
   create_table "feeds", :force => true do |t|
     t.string   "name"
+    t.string   "shortname"
     t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
