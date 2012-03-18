@@ -24,6 +24,13 @@ $("i.heart").click(function(e){
 	var article_id = $(this).attr('id').substr(6);
 	$.getJSON('articles/' + article_id + '/toggle_heart', function(data) {});
 	$(this).toggleClass('icon-heart-empty').toggleClass('icon-heart');
+	$(this).parents('div.article').removeClass('unread').addClass('read');
+})
+
+$("a.mail").click(function(e){
+	var article_id = $(this).attr('id').substr(5);
+	$.getJSON('articles/' + article_id + '/mark_read', function(data) {});
+	$(this).parents('div.article').removeClass('unread').addClass('read');
 })
 
 $("h3.article-title").click(function(e){

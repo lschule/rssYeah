@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  belongs_to :feed
+  belongs_to :feed, :inverse_of => :articles
   has_many :user_articles
   has_many :users, :through => :user_articles
 

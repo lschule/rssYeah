@@ -4,9 +4,9 @@ class CreateArticles < ActiveRecord::Migration
       t.string :name
       t.text :summary
       t.string :url
-      t.datetime :published_at
+      t.datetime :published
+      t.text :author
       t.string :guid
-
       t.timestamps
     end
   end

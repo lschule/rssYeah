@@ -15,12 +15,16 @@ class Feed < ActiveRecord::Base
 
     def add_articles(entries)
       entries.each do |entry|
+       if entry.published.nil?
+         entry.published = Time.now.strftime("%Y-%m-%d")
+       end
        article = Article.find_or_initialize_by_guid(entry.id)
        article.update_attributes(
        :name         => entry.title,
        :summary      => entry.summary,
        :url          => entry.url,
-       :published_at => entry.published,
+       :published    => entry.published,
+       :author       => entry.author,
        :guid         => entry.id,
        :feed_id      => self.id
        )

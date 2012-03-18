@@ -17,10 +17,11 @@ ActiveRecord::Schema.define(:version => 20120316082435) do
     t.string   "name"
     t.text     "summary"
     t.string   "url"
-    t.datetime "published_at"
+    t.datetime "published"
+    t.text     "author"
     t.string   "guid"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "feed_id"
   end
 

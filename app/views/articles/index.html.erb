@@ -29,14 +29,33 @@
       <div class="article <%= is_read(article.id,current_user.id) %>" data-article-id="<%= article.id  %>">	
 		<div class="article-header" id="<%= article.id %>_header" >
        		<div class="article-actions">
-				<i id="heart_<%= article.id %>" class="<%= is_hearted(article.id,current_user.id) %> heart"></i>
+				<a><i id="heart_<%= article.id %>" class="<%= is_hearted(article.id,current_user.id) %> heart"></i></a>
+				<a id="mail_<%= article.id %>" class="mail" href="mailto:?subject=I would like to share an interesting link with you&amp;body=
+					Hello,%0D%0A
+					I think you would be interested by this article:%0D%0A
+					<%= article.url %>%0D%0A
+					%0D%0A
+					He found it using RSSYeah%0D%0A
+					Have a nice day
+					" target="_blank">
+				<i class="icon-envelope"></i></a>
 			</div>
-			<h3 id="title_<%= article.id %>" class="article-title" data-toggle="collapse" data-target="#<%= article.id %>"><%= article.name %>&nbsp;<small><%= article.feed_name %></small></h3>
+			<h3 id="title_<%= article.id %>" class="article-title" data-toggle="collapse" data-target="#<%= article.id %>">
+				<%= article.name %><small class="pull-right"><%= article.published.try(:strftime,'%d %b %Y') %></small>
+			</h3>
+			<h5>
+				<%= article.feed_name %>
+				<% unless article.author.nil?  %>	
+					, by <%= article.author %>
+				<% end %>	
+			</h5>
 		</div>
 		<div class="collapse article-content" id="<%= article.id %>">
-			<small><%= link_to article.url, article.url %></small>
-       		<small><%= article.published_at.try(:strftime,'%d %b %Y') %></small>
-			<%= raw article.summary  %>
+			<div class="article-summary">
+				<%= raw article.summary  %>
+			</div>
+			<a href="<%= article.url %>" class="btn btn-primary go-to-article" target="_blank"><i class='icon-arrow-right'></i>&nbsp;<b>Go to Article</b></a>
+			<div style="height:14px">&nbsp;</div>
 		</div>
 	  </div>
 	<% end %>
