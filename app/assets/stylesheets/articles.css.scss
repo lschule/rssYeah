@@ -12,6 +12,16 @@ border-top:1px solid #bcbcbc;
 	height: 29px;
 	float:left;
 }
+
+.article-actions a{
+	font-size:24px;
+	color:#49AFCD;
+}
+
+.article-actions a:hover {
+	text-decoration:none;
+}
+
 .article-actions i{
 	margin-right:10px;
 	line-height:29px;
@@ -21,6 +31,30 @@ border-top:1px solid #bcbcbc;
 	padding: 6px 0px 0px 0px;
 }
 
+.article-header h3{
+line-height:20px;
+padding-left:74px;
+}
+
+.article-header h5{
+color:#8b8b8b;
+padding-left:74px;
+}
+
+.article-content{
+padding-left:74px;
+}
+
+.article-summary{
+padding-top:12px;
+}
+
 .unread{
-background-color:#f6f6f6;
+background-color:#f1f1f1;
+}
+
+.go-to-article{
+	clear:both;
+	margin-top:24px;
+	margin-bottom:16px;
 }

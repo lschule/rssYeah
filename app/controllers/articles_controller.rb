@@ -88,7 +88,7 @@ class ArticlesController < ApplicationController
   
   def toggle_heart
     @user_articles = UserArticle.find_or_initialize_by_user_id_and_article_id(current_user.id,params[:id])
-    @user_articles.update_attributes({:heart => !@user_articles.heart})
+    @user_articles.update_attributes({:heart => !@user_articles.heart, :read => 1})
     respond_to do |format|
       format.json { head :ok }
     end
