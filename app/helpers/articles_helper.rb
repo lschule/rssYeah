@@ -7,7 +7,10 @@ module ArticlesHelper
       else
         "unread"
       end 
+    else
+       "unread"
     end 
+  
   end
   
   def is_hearted(aid,uid)
@@ -17,7 +20,9 @@ module ArticlesHelper
         "icon-heart"
       else
         "icon-heart-empty"
-      end 
-    end 
+      end  
+    else
+       "icon-heart-empty"
+    end
   end
 end

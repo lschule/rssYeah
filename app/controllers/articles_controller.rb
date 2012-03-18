@@ -3,11 +3,12 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    #@articles = Article.includes(:feed, :user_articles).where("`user_articles`.user_id = ?", current_user.id).page(params[:page]).per(10)
-  
     params[:user_feeds] = current_user.feeds.collect { |item| item.id }
-    @articles = Article.search(params)
-    
+    if params[:user_feeds].count > 0
+      @articles = Article.search(params)
+    else
+      @articles = []
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @articles }
@@ -86,7 +87,7 @@ class ArticlesController < ApplicationController
   end  
   
   def toggle_heart
-    @user_articles = UserArticle.find_by_user_id_and_article_id(current_user.id,params[:id])
+    @user_articles = UserArticle.find_or_initialize_by_user_id_and_article_id(current_user.id,params[:id])
     @user_articles.update_attributes({:heart => !@user_articles.heart})
     respond_to do |format|
       format.json { head :ok }
@@ -94,7 +95,7 @@ class ArticlesController < ApplicationController
   end
   
   def mark_read
-    @user_articles = UserArticle.find_by_user_id_and_article_id(current_user.id,params[:id])
+    @user_articles = UserArticle.find_or_initialize_by_user_id_and_article_id(current_user.id,params[:id])
     @user_articles.update_attributes({:read => 1})
     respond_to do |format|
       format.json { head :ok }

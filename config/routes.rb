@@ -4,6 +4,7 @@ RssYeah::Application.routes.draw do
   resources :feeds do
     member do
       get :add_feed_for_current_user
+      get :remove_feed_for_current_user
     end
   end
   get "static/index"

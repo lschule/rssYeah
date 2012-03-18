@@ -85,12 +85,23 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     unless @feed.users.include?(current_user)
         @feed.users << current_user
-        current_user.articles << @feed.articles
     end
     
     respond_to do |format|
       format.html { redirect_to articles_url }
-      format.json { head :no_content }
+      format.json { head :ok }
+    end
+  end
+  
+  def remove_feed_for_current_user
+    @feed = Feed.find(params[:id])
+    unless !@feed.users.include?(current_user)
+        @feed.users.delete(current_user)
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to articles_url }
+      format.json { head :ok }
     end
   end
 end
