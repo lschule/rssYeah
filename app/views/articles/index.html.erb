@@ -30,12 +30,15 @@
 		<div class="article-header" id="<%= article.id %>_header" >
        		<div class="article-actions">
 				<a><i id="heart_<%= article.id %>" class="<%= is_hearted(article.id,current_user.id) %> heart"></i></a>
-				<a id="mail_<%= article.id %>" class="mail" href="mailto:?subject=I would like to share an interesting link with you&amp;body=
+				<a id="mail_<%= article.id %>" class="mail" href="mailto:?subject=FYI: <%= article.name %>&amp;body=
 					Hello,%0D%0A
 					I think you would be interested by this article:%0D%0A
+					%0D%0A
+					<%= article.name %>%0D%0A
+					<%= article.feed_name %> -- <%= article.published.try(:strftime,'%d %b %Y') %>%0D%0A
 					<%= article.url %>%0D%0A
 					%0D%0A
-					He found it using RSSYeah%0D%0A
+					I found it using RSSYeah%0D%0A
 					Have a nice day
 					" target="_blank">
 				<i class="icon-envelope"></i></a>
@@ -44,7 +47,7 @@
 				<%= article.name %><small class="pull-right"><%= article.published.try(:strftime,'%d %b %Y') %></small>
 			</h3>
 			<h5>
-				<%= article.feed_name %>
+				<%= article.feed_short %>
 				<% unless article.author.nil?  %>	
 					, by <%= article.author %>
 				<% end %>	
