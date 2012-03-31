@@ -12,9 +12,9 @@ class Article < ActiveRecord::Base
       #filter :range, published_at: {lte: Time.zone.now}
       query do
         boolean do
-          must { terms :feed_id, params[:user_feeds] } if params[:user_feeds].present?
+          must { terms :feed_id, params[:feeds] } if params[:feeds].present?
           must { string params[:query], default_operator: "AND" } if params[:query].present?
-          #must { range :published_at, lte: Time.zone.now }
+          must { range :published, gte: params[:after] } if params[:after].present?
           must { term :feed_id, params[:feed_id] } if params[:feed_id].present?
         end
       end if params[:query].present? or params[:feed_id].present? or params[:user_feeds].present?

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Query:</b>
+  <%= @saved_search.query %>
+</p>
+
+<p>
+  <b>Last access:</b>
+  <%= @saved_search.last_access %>
+</p>
+
+
+<%= link_to 'Edit', edit_saved_search_path(@saved_search) %> |
+<%= link_to 'Back', saved_searches_path %>

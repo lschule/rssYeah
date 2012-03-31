@@ -3,8 +3,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    params[:user_feeds] = current_user.feeds.collect { |item| item.id }
-    if params[:user_feeds].count > 0
+    params[:feeds] = current_user.feeds.collect { |item| item.id }
+    if params[:feeds].count > 0
       @articles = Article.search(params)
     else
       @articles = []

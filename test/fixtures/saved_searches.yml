@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  query: MyString
+  last_access: 2012-03-31 15:26:21
+
+two:
+  query: MyString
+  last_access: 2012-03-31 15:26:21
