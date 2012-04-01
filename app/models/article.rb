@@ -17,14 +17,14 @@ class Article < ActiveRecord::Base
           must { range :published, gte: params[:after] } if params[:after].present?
           must { term :feed_id, params[:feed_id] } if params[:feed_id].present?
         end
-      end if params[:query].present? or params[:feed_id].present? or params[:user_feeds].present?
+      end if params[:query].present? or params[:feed_id].present? or params[:feeds].present?
       sort { by :published, 'desc' }
       facet "feeds" do
         terms :feed_id
       end
       #raise to_curl
     end
-  end
+  end  
     
   def feed_name
     feed.name if feed
