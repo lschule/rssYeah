@@ -55,7 +55,7 @@ gem "authlogic"
 gem "high_voltage"
 
 # elasticsearch
-gem 'tire', '~> 0.4.0.pre'
+gem 'tire'
 
 # pagination
 #gem 'will_paginate'
