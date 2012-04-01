@@ -1,4 +1,4 @@
-ENV['BONSAI_INDEX_URL'] = 'http://index.bonsai.io/llxopvypuzll59mxpywx'
+#ENV['BONSAI_INDEX_URL'] = 'http://index.bonsai.io/llxopvypuzll59mxpywx'
 
 if ENV['BONSAI_INDEX_URL'].present? then
 
