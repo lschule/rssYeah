@@ -11,6 +11,7 @@
     <td>(<%= channel.count %>)</td>
     <td><%= link_to channel.query, channel_path(channel) %></td>
     <td>we could also list facets here, i.e. how many news per feed</td>
+    <td><%= link_to 'edit saved search', edit_saved_search_path(channel) %></td>
   </tr>
 <% end %>
 </table>
