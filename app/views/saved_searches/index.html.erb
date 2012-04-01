@@ -13,9 +13,9 @@
 <% @saved_searches.each do |saved_search| %>
   <tr>
     <td><%= saved_search.query %></td>
-    <td>(<%= @new_articles[saved_search.id] %>)</td>
     <td><%= saved_search.last_access %></td>
-    <td><%= link_to 'Show', channel_path(saved_search) %></td>
+    <td><%= link_to 'View Articles', channel_path(saved_search) %></td>
+    <td><%= link_to 'Show', saved_search_path(saved_search) %></td>
     <td><%= link_to 'Edit', edit_saved_search_path(saved_search) %></td>
     <td><%= link_to 'Destroy', saved_search, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
@@ -25,3 +25,6 @@
 <br />
 
 <%= link_to 'New Saved search', new_saved_search_path %>
+<br />
+<br />
+<%= link_to 'My Channels / Dashboard', channels_path %>

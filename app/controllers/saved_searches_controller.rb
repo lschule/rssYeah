@@ -3,10 +3,6 @@ class SavedSearchesController < ApplicationController
   # GET /saved_searches.json
   def index
     @saved_searches = SavedSearch.all
-    @new_articles = {}
-    @saved_searches.each do |saved_search|
-      @new_articles[saved_search.id] = 15
-    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @saved_searches }
