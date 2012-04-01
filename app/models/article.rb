@@ -24,7 +24,26 @@ class Article < ActiveRecord::Base
       end
       #raise to_curl
     end
-  end  
+  end
+
+  def self.count(params)
+    s = tire.search :search_type => 'count' do
+      query do
+        boolean do
+          must { terms :feed_id, params[:feeds] } if params[:feeds].present?
+          must { string params[:query], default_operator: "AND" } if params[:query].present?
+          must { range :published, gte: params[:after] } if params[:after].present?
+          must { term :feed_id, params[:feed_id] } if params[:feed_id].present?
+        end
+      end if params[:query].present? or params[:feed_id].present? or params[:feeds].present?
+      # we could also return facets
+      #facet "feeds" do
+      #  terms :feed_id
+      #end
+      #raise to_curl
+    end
+    s.total
+  end
     
   def feed_name
     feed.name if feed

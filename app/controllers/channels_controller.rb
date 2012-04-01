@@ -1,7 +1,13 @@
-class ChannelController < ApplicationController
+class ChannelsController < ApplicationController
   
   def index
-    redirect_to saved_searches_url
+    #redirect_to saved_searches_url
+    # TODO get saved searches of current user
+    @channels = SavedSearch.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @channels }
+    end    
   end
 
   def show

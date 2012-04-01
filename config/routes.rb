@@ -1,6 +1,6 @@
 RssYeah::Application.routes.draw do
 
-  resources :saved_searches, :channel
+  resources :saved_searches, :channels
 
   resources :user_articles
 
