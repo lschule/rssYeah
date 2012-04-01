@@ -3,6 +3,7 @@ class SavedSearchesController < ApplicationController
   # GET /saved_searches.json
   def index
     @saved_searches = SavedSearch.all
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @saved_searches }
@@ -14,23 +15,11 @@ class SavedSearchesController < ApplicationController
   def show
     @saved_search = SavedSearch.find(params[:id])
 
-#    @saved_search.last_access = Time.now
-#    @saved_search.save()
-#    redirect_to saved_searches_url and return
-    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @saved_search }
     end
   end
-
-#  def access
-#    @saved_search = SavedSearch.find(params[:id])
-
-#    @saved_search.last_access = Time.now
-#    @saved_search.save()
-#    redirect_to saved_searches_url and return
-#  end
 
   # GET /saved_searches/new
   # GET /saved_searches/new.json
@@ -52,6 +41,7 @@ class SavedSearchesController < ApplicationController
   # POST /saved_searches.json
   def create
     @saved_search = SavedSearch.new(params[:saved_search])
+    @saved_search.user = current_user
 
     respond_to do |format|
       if @saved_search.save

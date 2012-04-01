@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Owner:</b>
+  <%= link_to @saved_search.user.username, user_path(@saved_search.user) %>
+</p>
+
+<p>
   <b>Query:</b>
   <%= @saved_search.query %>
 </p>

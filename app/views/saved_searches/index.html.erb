@@ -2,8 +2,8 @@
 
 <table>
   <tr>
+    <th>Owner</th>
     <th>Query</th>
-    <th>(New)</th>
     <th>Last access</th>
     <th></th>
     <th></th>
@@ -12,6 +12,7 @@
 
 <% @saved_searches.each do |saved_search| %>
   <tr>
+    <td><%= saved_search.user.username %></td>
     <td><%= saved_search.query %></td>
     <td><%= saved_search.last_access %></td>
     <td><%= link_to 'View Articles', channel_path(saved_search) %></td>

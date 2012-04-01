@@ -1,4 +1,5 @@
 class SavedSearch < ActiveRecord::Base
+  belongs_to :user
 
   def articles
     search_params = {:query => query, :after => last_access}
