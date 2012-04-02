@@ -1,3 +1,27 @@
 // Place all the styles related to the Channel controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.big-OR{
+font-size:24px;
+padding:9px 14px 0px 14px;
+vertical-align:middle;
+margin-top:10px;
+}
+.middle-OR{
+font-size:16px;
+padding:9px 12px 0px 12px;
+vertical-align:middle;
+margin-top:10px;
+}
+#search-articles{
+padding:9px;
+vertical-align:middle;
+margin:0px;
+margin-top:10px;
+font-weight:bold; 
+font-size:15px
+}
+
+.channel-overview{
+margin-bottom:24px;
+}

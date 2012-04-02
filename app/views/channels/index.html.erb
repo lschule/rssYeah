@@ -1,21 +1,27 @@
-<h1>Listing Channels</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th>Query</th>
-  </tr>
-
+	<h2>What's new in your channels?</h2>	
+	<div class="channel-overview">
 <% @channels.each do |channel| %>
-  <tr>
-    <td>(<%= channel.count %>)</td>
-    <td><%= link_to channel.query, channel_path(channel) %></td>
-    <td>we could also list facets here, i.e. how many news per feed</td>
-    <td><%= link_to 'edit saved search', edit_saved_search_path(channel) %></td>
-  </tr>
+	<%= link_to raw('<h3>"' + channel.query + '" : ' + channel.count.to_s + ' new items</h3>'), channel_path(channel) %>
 <% end %>
-</table>
+</div>
+<h3>Want to navigate your articles ?</h3>
+<div class="">
+	<%= form_tag articles_path, method: :get do %>
+	<a href="articles" class="btn btn-primary btn-large"><i class='icon-back'></i>&nbsp;<b>Go to your articles</b></a>
+	<strong class="big-OR">Or</strong>
+	    <%= text_field_tag :query, params[:query], :placeholder => 'Do a search', :id => "search-articles" %>
+	<% end %>
+</div>
 
-<br />
+<h3>Or do something else ?</h3>
+<div class="">
+	<a href="feeds" class="btn btn-primary">Manage your feeds</a>
+	<strong class="middle-OR">Or</strong>
+	<%= link_to 'Edit your profile', edit_user_path(current_user), :class => 'btn btn-primary' %>
+	<strong class="middle-OR">Or</strong>
+	<%= link_to 'Create a new channel', new_saved_search_path, :class => 'btn btn-primary' %>
+</div>
 
-<%= link_to 'New Saved search', new_saved_search_path %>
+
+

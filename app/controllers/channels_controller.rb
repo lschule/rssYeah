@@ -1,9 +1,8 @@
 class ChannelsController < ApplicationController
-  
+  before_filter :confirm_logged_in
   def index
     #redirect_to saved_searches_url
-    # TODO get saved searches of current user
-    @channels = SavedSearch.all
+    @channels = current_user.saved_searches.collect
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @channels }

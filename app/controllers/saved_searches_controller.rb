@@ -1,4 +1,5 @@
 class SavedSearchesController < ApplicationController
+  before_filter :confirm_logged_in
   # GET /saved_searches
   # GET /saved_searches.json
   def index

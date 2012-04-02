@@ -2,13 +2,23 @@ class SavedSearch < ActiveRecord::Base
   belongs_to :user
 
   def articles
-    search_params = {:query => query, :after => last_access, :feeds => user.feeds.collect { |item| item.id }}
-    Article.search(search_params)
+    feeds = user.feeds.collect { |item| item.id }
+    if feeds.count > 0
+      search_params = {:query => query, :after => last_access, :feeds => feeds}
+      Article.search(search_params)
+    else
+      Array.new
+    end
   end
 
   def count
-    search_params = {:query => query, :after => last_access, :feeds => user.feeds.collect { |item| item.id }}
-    Article.count(search_params)
+    feeds = user.feeds.collect { |item| item.id }
+    if feeds.count > 0
+      search_params = {:query => query, :after => last_access, :feeds => feeds}
+      Article.count(search_params)
+    else
+      0
+    end
   end
 
 end
