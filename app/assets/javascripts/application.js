@@ -22,21 +22,21 @@ $(".dropdown-toggle, .menu").click(function (e) {
 
 $("i.heart").click(function(e){
 	var article_id = $(this).attr('id').substr(6);
-	$.getJSON('articles/' + article_id + '/toggle_heart', function(data) {});
+	$.getJSON('/articles/' + article_id + '/toggle_heart', function(data) {});
 	$(this).toggleClass('icon-heart-empty').toggleClass('icon-heart');
 	$(this).parents('div.article').removeClass('unread').addClass('read');
 })
 
 $("a.mail").click(function(e){
 	var article_id = $(this).attr('id').substr(5);
-	$.getJSON('articles/' + article_id + '/mark_read', function(data) {});
+	$.getJSON('/articles/' + article_id + '/mark_read', function(data) {});
 	$(this).parents('div.article').removeClass('unread').addClass('read');
 })
 
 $("h3.article-title").click(function(e){
 	if(	$(this).parents('div.article').hasClass('unread')){
 		var article_id = $(this).attr('id').substr(6);
-		$.getJSON('articles/' + article_id + '/mark_read', function(data) {});
+		$.getJSON('/articles/' + article_id + '/mark_read', function(data) {});
 		$(this).parents('div.article').removeClass('unread').addClass('read');
 	}
 })
@@ -44,7 +44,7 @@ $("h3.article-title").click(function(e){
 $("a.add-feed").click(function(e){
 		if(!$(this).hasClass("disabled")){
 			var article_id = $(this).attr('id').substr(4);
-			$.getJSON('feeds/' + article_id + '/add_feed_for_current_user', function(data) {});
+			$.getJSON('/feeds/' + article_id + '/add_feed_for_current_user', function(data) {});
 			$(this).addClass("disabled").html("<i class='icon-ok'></i>");
 			$("a#rem_" + article_id).removeClass("disabled").html("<i class='icon-minus'></i>&nbsp;Remove");
 		}
@@ -55,7 +55,7 @@ $("a.add-feed").click(function(e){
 $("a.remove-feed").click(function(e){
 	if(!$(this).hasClass("disabled")){
 		var article_id = $(this).attr('id').substr(4);
-		$.getJSON('feeds/' + article_id + '/remove_feed_for_current_user', function(data) {});
+		$.getJSON('/feeds/' + article_id + '/remove_feed_for_current_user', function(data) {});
 		$(this).addClass("disabled").html("<i class='icon-ok'></i>");
 		$("a#add_" + article_id).removeClass("disabled").html("<i class='icon-plus'></i>&nbsp;Add");
 	}
