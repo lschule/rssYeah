@@ -9,6 +9,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Filter by Feed <b class="caret"></b></a>
                     <ul class="dropdown-menu">
 						<li><%= link_to "All", params.merge(feed_id: nil) %></li>
+<% unless @articles.length == 0 %>						
 <% @articles.facets['feeds']['terms'].each do |facet|
 	if params[:feed_id] == facet['term'].to_s
       checked = " <i class='icon-ok'></i>"
@@ -18,6 +19,7 @@
 	%>
 						<li><%= link_to raw(checked + Feed.find(facet['term']).name  + ' (' + facet['count'].to_s + ')') , params.merge(feed_id: facet['term']) %></li>
 						<% end %>
+		<% end %>
                     </ul>
                   </li>
               	</ul>
