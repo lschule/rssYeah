@@ -13,12 +13,11 @@ class ChannelsController < ApplicationController
     @saved_search = SavedSearch.find(params[:id])
     
     search_params = {}
-    
-    #TODO add paging?
-    
+       
     search_params[:feeds] = current_user.feeds.collect { |item| item.id }
     search_params[:query] = @saved_search.query
     search_params[:after] = @saved_search.last_access
+    search_params[:feed_id] = params[:feed_id]  
     
     logger.debug search_params
     

@@ -1,27 +1,29 @@
-
-	<h2>What's new in your channels?</h2>	
-	<div class="channel-overview">
-<% @channels.each do |channel| %>
-	<%= link_to raw('<h3>"' + channel.query + '" : ' + channel.count.to_s + ' new items</h3>'), channel_path(channel) %>
-<% end %>
-</div>
-<h3>Want to navigate your articles ?</h3>
-<div class="">
-	<%= form_tag articles_path, method: :get do %>
-	<a href="articles" class="btn btn-primary btn-large"><i class='icon-back'></i>&nbsp;<b>Go to your articles</b></a>
-	<strong class="big-OR">Or</strong>
-	    <%= text_field_tag :query, params[:query], :placeholder => 'Do a search', :id => "search-articles" %>
+<div class="row">
+	<div class="span3 well">
+		<h2>Your channels</h2>	
+		<div class="channel-overview">
+		<% @channels.each do |channel| %>
+			<%= link_to raw('<h3>' + channel.query + '</h3>'), channel_path(channel) %>
+			<h4><%=  channel.count.to_s %> new items</h4>
+		<% end %>
+		</div>
+	</div>
+	<div class="span3 well">
+		<h2>Your articles </h2>
+		<div>
+		<%= form_tag articles_path, method: :get do %>
+		<a href="articles" class="btn btn-primary btn-large"><i class='icon-arrow-right'></i>&nbsp;View all articles</a>
+		</div>
+		<h3>Search</h3>
+	    <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :id => "search-articles" %>
 	<% end %>
 </div>
-
-<h3>Or do something else ?</h3>
-<div class="">
-	<a href="feeds" class="btn btn-primary">Manage your feeds</a>
-	<strong class="middle-OR">Or</strong>
-	<%= link_to 'Edit your profile', edit_user_path(current_user), :class => 'btn btn-primary' %>
-	<strong class="middle-OR">Or</strong>
-	<%= link_to 'Create a new channel', new_saved_search_path, :class => 'btn btn-primary' %>
+<div class="span3 well">
+<h2>Other actions</h2>
+	<a href="feeds" class="btn btn-primary  btn-large"><i class='icon-arrow-right'></i>&nbsp;Manage your feeds</a>
+	<%= link_to raw("<i class='icon-arrow-right'></i>&nbsp;Edit your profile"), edit_user_path(current_user), :class => 'btn btn-primary  btn-large' %>
+	<%= link_to raw("<i class='icon-arrow-right'></i>&nbsp;Create a new channel"), new_saved_search_path, :class => 'btn btn-primary  btn-large' %>
 </div>
 
 
-
+</div>

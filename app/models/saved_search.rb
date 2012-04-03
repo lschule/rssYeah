@@ -1,16 +1,6 @@
 class SavedSearch < ActiveRecord::Base
   belongs_to :user
 
-  def articles
-    feeds = user.feeds.collect { |item| item.id }
-    if feeds.count > 0
-      search_params = {:query => query, :after => last_access, :feeds => feeds}
-      Article.search(search_params)
-    else
-      Array.new
-    end
-  end
-
   def count
     feeds = user.feeds.collect { |item| item.id }
     if feeds.count > 0

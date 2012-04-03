@@ -15,7 +15,7 @@
 //= require twitter/bootstrap
 //= require_tree .
 
-$(".dropdown-toggle, .menu").click(function (e) {
+$("#logged-in-button, .menu").click(function (e) {
  	var $div = $(this).parent("div").toggleClass('open');
  	return false;
  });
