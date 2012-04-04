@@ -19,25 +19,25 @@ $("#logged-in-button, .menu").click(function (e) {
  	var $div = $(this).parent("div").toggleClass('open');
  	return false;
  });
-
 $("i.heart").click(function(e){
 	var article_id = $(this).attr('id').substr(6);
 	$.getJSON('/articles/' + article_id + '/toggle_heart', function(data) {});
 	$(this).toggleClass('icon-heart-empty').toggleClass('icon-heart');
-	$(this).parents('div.article').removeClass('unread').addClass('read');
+	$(this).parents('div.article').addClass('read').removeClass('unread').removeClass('new');
 })
 
 $("a.mail").click(function(e){
 	var article_id = $(this).attr('id').substr(5);
 	$.getJSON('/articles/' + article_id + '/mark_read', function(data) {});
-	$(this).parents('div.article').removeClass('unread').addClass('read');
+	$(this).parents('div.article').addClass('read').removeClass('unread').removeClass('new');
 })
 
 $("h3.article-title").click(function(e){
-	if(	$(this).parents('div.article').hasClass('unread')){
+	var article = $(this).parents('div.article')
+	if(	article.hasClass('unread') || article.hasClass('new')){
 		var article_id = $(this).attr('id').substr(6);
 		$.getJSON('/articles/' + article_id + '/mark_read', function(data) {});
-		$(this).parents('div.article').removeClass('unread').addClass('read');
+		$(this).parents('div.article').addClass('read').removeClass('unread').removeClass('new');
 	}
 })
 
@@ -49,7 +49,7 @@ $("a.add-feed").click(function(e){
 			$("a#rem_" + article_id).removeClass("disabled").html("<i class='icon-minus'></i>&nbsp;Remove");
 		}
 		return false;
-		
+
 })
 
 $("a.remove-feed").click(function(e){
@@ -60,4 +60,19 @@ $("a.remove-feed").click(function(e){
 		$("a#add_" + article_id).removeClass("disabled").html("<i class='icon-plus'></i>&nbsp;Add");
 	}
 	return false;
+})
+
+$(".delete-channel").click(function(e){
+	var channel_id = $(this).attr('id').substr(8);
+	$("#channel-query").html($("#channel-title_"+channel_id).html());
+	$("#channel-id-to-delete").val(channel_id);
+})
+
+$("#confirm-delete").click(function(e){
+	var channel_id = $("#channel-id-to-delete").val();
+	$.ajax({
+	    url: '/saved_searches/'+ channel_id,
+	    type: 'DELETE',
+	});	
+	$("#channel-container_" + channel_id).remove();
 })

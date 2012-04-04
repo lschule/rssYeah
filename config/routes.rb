@@ -1,7 +1,11 @@
 RssYeah::Application.routes.draw do
 
-  resources :saved_searches, :channels
-
+  resources :saved_searches do
+    member do
+      get :update_last_access
+    end
+  end
+  resources :channels
   resources :user_articles
 
   resources :feeds do

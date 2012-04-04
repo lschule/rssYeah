@@ -38,7 +38,7 @@
           </div>
 <% unless @articles.length == 0 %>
 	<div class="article-container">
-		<%= render :partial => 'article', :collection =>  @articles %>
+		<%= render :partial => 'article', :collection =>  @articles, :locals => {:last_access => Time.now.strftime("%Y-%m-%d")} %>
 	</div>
 	 <%= paginate @articles %>
 <% else %>

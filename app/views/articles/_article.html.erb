@@ -1,4 +1,4 @@
-<div class="article <%= is_read(article.id,current_user.id) %>" data-article-id="<%= article.id  %>">	
+<div class="article <%= is_read_or_new(article,current_user.id,last_access) %>" data-article-id="<%= article.id  %>">	
 	<div class="article-header" id="<%= article.id %>_header" >
    		<div class="article-actions">
 			<a><i id="heart_<%= article.id %>" class="<%= is_hearted(article.id,current_user.id) %> heart"></i></a>

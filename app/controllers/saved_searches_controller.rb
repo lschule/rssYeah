@@ -43,10 +43,10 @@ class SavedSearchesController < ApplicationController
   def create
     @saved_search = SavedSearch.new(params[:saved_search])
     @saved_search.user = current_user
-
+    @saved_search.last_access = DateTime.new(1990,1,1)
     respond_to do |format|
       if @saved_search.save
-        format.html { redirect_to @saved_search, notice: 'Saved search was successfully created.' }
+        format.html { redirect_to :channels, notice: 'Your channel was successfully created.' }
         format.json { render json: @saved_search, status: :created, location: @saved_search }
       else
         format.html { render action: "new" }
@@ -78,8 +78,16 @@ class SavedSearchesController < ApplicationController
     @saved_search.destroy
 
     respond_to do |format|
-      format.html { redirect_to saved_searches_url }
+      format.html { head :no_content }
       format.json { head :no_content }
+    end
+  end
+  
+  def update_last_access
+    @saved_search = SavedSearch.find(params[:id])
+    @saved_search.update_attributes({:last_access => Time.now.strftime("%Y-%m-%d %H:%M:%S")})
+    respond_to do |format|
+      format.json { head :ok }
     end
   end
 end

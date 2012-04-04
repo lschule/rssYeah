@@ -1,14 +1,20 @@
 module ArticlesHelper
-  def is_read(aid,uid)
-    @user_articles = UserArticle.find_by_user_id_and_article_id(uid,aid)
-    unless @user_articles.nil?
-      if @user_articles.read
+  def is_read_or_new(article,uid,last_access)
+    @user_article = UserArticle.find_by_user_id_and_article_id(uid,article.id)
+    unless @user_article.nil?
+      if @user_article.read
         "read"
+      elsif article.published > last_access
+        "new"
       else
         "unread"
       end 
     else
+      if article.published > last_access
+        "new"
+      else
        "unread"
+      end
     end 
   
   end

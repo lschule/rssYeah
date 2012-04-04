@@ -23,6 +23,13 @@
       <%= f.password_field :password_confirmation, :placeholder => "Confirm your password", :class => "span3 bottom-10px" %>
     </div>
   <div class="actions">
-    <%= f.submit 'Sign up', :class => 'btn btn-primary btn-large' %>
+	<%
+		if is_new
+			submit_text = 'Sign up'
+		else
+			submit_text = 'Save'
+		end 
+	%>
+    <%= f.submit submit_text, :class => 'btn btn-primary btn-large' %>
   </div>
 <% end %>
