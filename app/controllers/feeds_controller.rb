@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all
+    @feeds = Feed.find( :all, :order => 'name' )
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @feeds }

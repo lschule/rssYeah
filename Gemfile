@@ -60,3 +60,6 @@ gem 'tire'
 # pagination
 #gem 'will_paginate'
 gem 'kaminari'
+
+# cron
+gem 'whenever'
