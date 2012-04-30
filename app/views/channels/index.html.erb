@@ -19,6 +19,18 @@
 		<%= form_tag articles_path, method: :get do %>
 		<a href="articles" class="btn btn-primary btn-large"><i class='icon-arrow-right'></i>&nbsp;View all articles</a>
 		</div>
+    <div>
+			<ul class="nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Articles by feed <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+          <% @feeds.each do |feed| %>
+            <li><a href="articles?feed_id=<%= feed.id %>"><%= feed.name %></a></li>
+          <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
 		<h3>Search</h3>
 	    <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :id => "search-articles" %>
 	<% end %>
