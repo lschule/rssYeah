@@ -2,10 +2,14 @@ class UserArticlesController < ApplicationController
   # GET /user_articles
   # GET /user_articles.json
   def index
-    @user_articles = UserArticle.all
+    #@user_articles = UserArticle.all
+    @user_articles = UserArticle.find_all_by_user_id_and_heart(current_user.id,true)
+    @article_ids = @user_articles.collect { |ua| ua.article_id }
+    @articles = Article.find_all_by_id(@article_ids, :order => 'published DESC')
 
     respond_to do |format|
       format.html # index.html.erb
+      #format.html { render :template => 'articles/index' }
       format.json { render json: @user_articles }
     end
   end

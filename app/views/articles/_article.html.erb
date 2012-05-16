@@ -8,7 +8,7 @@
 				%0D%0A
 				<%= article.name %>%0D%0A
 				<%= article.feed_name %> -- <%= article.published.try(:strftime,'%d %b %Y') %>%0D%0A
-				<%= article.url %>%0D%0A
+				<%= URI.escape(article.url) %>%0D%0A
 				%0D%0A
 				I found it using RSSYeah%0D%0A
 				Have a nice day

@@ -1,29 +1,18 @@
-<h1>Listing user_articles</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Article</th>
-    <th>Read</th>
-    <th>Heart</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @user_articles.each do |user_article| %>
-  <tr>
-    <td><%= user_article.user_id %></td>
-    <td><%= user_article.article_id %></td>
-    <td><%= user_article.read %></td>
-    <td><%= user_article.heart %></td>
-    <td><%= link_to 'Show', user_article %></td>
-    <td><%= link_to 'Edit', edit_user_article_path(user_article) %></td>
-    <td><%= link_to 'Destroy', user_article, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<div class="navbar navbar-static">
+  <div class="navbar-inner">
+    <div class="container" style="width: auto;">
+      <a class="brand" href="#">Your hearticles</a>
+      <ul class="nav pull-right">
+        <li><%= link_to raw("<i class='icon-arrow-left'></i>&nbsp;<b>Go back to your Dashboard</b>"), :channels  %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<% unless @articles.length == 0 %>
+  <div class="article-container">
+    <%= render :partial => 'articles/article', :collection =>  @articles, :locals => {:last_access => Time.now.strftime("%Y-%m-%d")} %>
+  </div>
+<% else %>
+  <i class='icon-exclamation-sign pull-left' style="font-size:46px;"></i>
+  <h2 style="line-height:34px;padding-left:40px">Seems like we found nothing. Add feeds or change your search criteria and enjoy the read!</h2>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New User article', new_user_article_path %>
