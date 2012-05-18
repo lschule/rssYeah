@@ -15,20 +15,19 @@
 //= require twitter/bootstrap
 //= require_tree .
 
-function find_id_and_update_last_access(){
+function update_last_access(){
 	var saved_search_long_id=$("#channel-container").find(">:first-child").attr('id');
 	if (saved_search_long_id !== undefined){
 		var saved_search_id= saved_search_long_id.substr(13)
-		update_last_access(saved_search_id)
+		if(saved_search_id > 0){
+			$.getJSON('/saved_searches/' + saved_search_id + '/update_last_access', function(data) {});
+		}
 	}
 }
 
-function update_last_access(saved_search_id) { 
-	alert(saved_search_id)
-	if(saved_search_id > 0){
-		$.getJSON('/saved_searches/' + saved_search_id + '/update_last_access', function(data) {});
-	}
-}
+$("#channel-container").ready(function (e) {
+	setTimeout(function(){update_last_access()}, 4000);
+});
 
 $("#logged-in-button, .menu").click(function (e) {
  	var $div = $(this).parent("div").toggleClass('open');
@@ -37,7 +36,7 @@ $("#logged-in-button, .menu").click(function (e) {
 $("i.heart").click(function(e){
 	var article_id = $(this).attr('id').substr(6);
 	$.getJSON('/articles/' + article_id + '/toggle_heart', function(data) {});
-	find_id_and_update_last_access();
+	update_last_access();
 	$(this).toggleClass('icon-heart-empty').toggleClass('icon-heart');
 	$(this).parents('div.article').addClass('read').removeClass('unread').removeClass('new');
 })
@@ -45,7 +44,7 @@ $("i.heart").click(function(e){
 $("a.mail").click(function(e){
 	var article_id = $(this).attr('id').substr(5);
 	$.getJSON('/articles/' + article_id + '/mark_read', function(data) {});
-	find_id_and_update_last_access();
+	update_last_access();
 	$(this).parents('div.article').addClass('read').removeClass('unread').removeClass('new');
 })
 
@@ -54,7 +53,7 @@ $("h3.article-title").click(function(e){
 	if(	article.hasClass('unread') || article.hasClass('new')){
 		var article_id = $(this).attr('id').substr(6);
 		$.getJSON('/articles/' + article_id + '/mark_read', function(data) {});
-		find_id_and_update_last_access();
+		update_last_access();
 		$(this).parents('div.article').addClass('read').removeClass('unread').removeClass('new');
 	}
 })

@@ -41,12 +41,17 @@ class SavedSearchesController < ApplicationController
   # POST /saved_searches
   # POST /saved_searches.json
   def create
-    @saved_search = SavedSearch.new(params[:saved_search])
+    unless params[:saved_search].nil?
+      @saved_search = SavedSearch.new(params[:saved_search])
+    else
+      @saved_search = SavedSearch.new();
+      @saved_search.query = params[:query];
+    end
     @saved_search.user = current_user
     @saved_search.last_access = DateTime.new(1990,1,1)
     respond_to do |format|
       if @saved_search.save
-        format.html { redirect_to :channels, notice: 'Your channel was successfully created.' }
+        format.html { redirect_to channel_url(@saved_search), notice: 'Your channel was successfully created.' }
         format.json { render json: @saved_search, status: :created, location: @saved_search }
       else
         format.html { render action: "new" }

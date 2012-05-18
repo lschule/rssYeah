@@ -1,4 +1,3 @@
-
 <div class="navbar navbar-static">
             <div class="navbar-inner">
               <div class="container" style="width: auto;">
@@ -26,16 +25,37 @@
 				
 				<%= form_tag articles_path, method: :get, class: :"navbar-search pull-left" do %>
 		
-			    <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :class => "search-query span5"  %>
+			    <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :class => "search-query span3"  %>
 			<% end %>
-				
-				
+			<% unless params[:query] == "" %>
+				<ul class="nav">
+					<li><a data-toggle="modal" href="#save-search-modal"><i class='icon-plus-sign'></i>&nbsp;<b>Save this search</b></a></li>	
+              	</ul>
+				<% end %>
 				<ul class="nav pull-right">
 					<li><%= link_to raw("<i class='icon-arrow-left'></i>&nbsp;<b>Go back to your Dashboard</b>"), :channels  %></li>
               	</ul>
               </div>
             </div>
           </div>
+		<div id="save-search-modal" class="modal hide fade in" style="display:none ">
+		            <div class="modal-header">
+		              <a class="close" data-dismiss="modal">×</a>
+		              <h3>Save this search</h3>
+		            </div>
+		            <div class="modal-body">
+		              <h4>You will create a channel with the following query</h4>
+					  <h2 id="channel-query"><%= params[:query] %></h2>
+		            </div>
+		            <div class="modal-footer">
+					<%= form_tag({:controller => "saved_searches", :action => "create"}, :method => "post") do %>	
+
+					  <%= hidden_field_tag :query, params[:query] %>
+		              <a href="#" class="btn btn-large" data-dismiss="modal">Cancel</a>
+					  <%= submit_tag "Add this feed to the list", :class => 'btn btn-primary btn-large' %>	
+					<% end %>
+					</div>
+		</div>
 <% unless @articles.length == 0 %>
 	<div class="article-container">
 		<%= render :partial => 'article', :collection =>  @articles, :locals => {:last_access => Time.now.strftime("%Y-%m-%d")} %>
