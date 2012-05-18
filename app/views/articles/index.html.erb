@@ -27,7 +27,7 @@
 		
 			    <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :class => "search-query span3"  %>
 			<% end %>
-			<% unless params[:query] == "" %>
+			<% unless params[:query].nil? || params[:query] == "" %>
 				<ul class="nav">
 					<li><a data-toggle="modal" href="#save-search-modal"><i class='icon-plus-sign'></i>&nbsp;<b>Save this search</b></a></li>	
               	</ul>
