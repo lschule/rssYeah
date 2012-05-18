@@ -1,7 +1,7 @@
 		<div class="navbar navbar-static">
 		            <div class="navbar-inner">
-		              <div class="container" style="width: auto;">
-		                <a class="brand" href="#">Channel: <%= @saved_search.query %></a>
+		              <div id="channel-container" class="container" style="width: auto;">
+		                <a id="saved_search_<%= @saved_search.id %>" class="brand" href="#">Channel: <%= @saved_search.query %></a>
 		                
 						<ul class="nav">
 		                  <li class="dropdown">
@@ -41,9 +41,5 @@
 		</h2>
 <% end %>
 <script type="text/javascript">
-	function update_last_access() { 
-	    $.getJSON('/saved_searches/' + <%= @saved_search.id %> + '/update_last_access', function(data) {});
-	 }
-	setTimeout(update_last_access, 4000);
-	
+	setTimeout(update_last_access(<%= @saved_search.id %>), 4000);
 </script>

@@ -3,7 +3,6 @@ class ChannelsController < ApplicationController
   def index
     @channels = current_user.saved_searches.collect
     @feeds = current_user.feeds.collect.sort { |a,b| a.name <=> b.name }
-    #@feeds.sort! { |a,b| a.name <=> b.name }
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @channels }

@@ -1,5 +1,6 @@
 <div class="row">
-	<div class="span3 well">
+	<div class="span4">
+		<div class="well">
 		<h2>Your channels</h2>	
 		<div class="channel-overview">
 		<% @channels.each do |channel| %>
@@ -12,36 +13,40 @@
 			</div>
 		<% end %>
 		</div>
+			<%= link_to raw("<i class='icon-arrow-right'></i>&nbsp;Create a new channel"), new_saved_search_path, :class => 'btn btn-primary  btn-large' %>
 	</div>
-	<div class="span3 well">
+	</div>
+	<div class="span4">
+		<div class="well">
 		<h2>Your articles </h2>
 		<div>
-      <%= form_tag articles_path, method: :get do %>
       <a href="articles" class="btn btn-primary btn-large"><i class='icon-arrow-right'></i>&nbsp;All articles</a>
       <a href="user_articles" class="btn btn-primary btn-large"><i class='icon-arrow-right'></i>&nbsp;Hearticles</a>
-			<ul class="nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle btn btn-primary btn-large" data-toggle="dropdown">Articles by feed <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-          <% @feeds.each do |feed| %>
-            <li><a href="articles?feed_id=<%= feed.id %>"><%= feed.shortname %></a></li>
-          <% end %>
-          </ul>
-        </li>
-      </ul>
+	  <div class="btn-group">
+		<button class="dropdown-toggle menu btn btn-primary btn-large" data-toggle="dropdown-menu"><i class='icon-arrow-right'></i>&nbsp;Specific feed <b class="caret"></b></button>
+					  <ul class="dropdown-menu">
+			          <% @feeds.each do |feed| %>
+			            <li><a href="articles?feed_id=<%= feed.id %>"><%= feed.shortname %></a></li>
+			          <% end %>
+			          </ul>
+					</div>
     </div>
+<div>
+<%= form_tag articles_path, method: :get do %>
 		<h3>Search</h3>
+	  
 	    <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :id => "search-articles" %>
 	<% end %>
 </div>
-<div class="span3 well">
+</div>
+</div>
+<div class="span4">
+	<div class="well">
 <h2>Other actions</h2>
 	<a href="feeds" class="btn btn-primary  btn-large"><i class='icon-arrow-right'></i>&nbsp;Manage your feeds</a>
-	<%= link_to raw("<i class='icon-arrow-right'></i>&nbsp;Edit your profile"), edit_user_path(current_user), :class => 'btn btn-primary  btn-large' %>
-	<%= link_to raw("<i class='icon-arrow-right'></i>&nbsp;Create a new channel"), new_saved_search_path, :class => 'btn btn-primary  btn-large' %>
 </div>
 
-
+</div>
 </div>
 
 <div id="delete-channel-modal" class="modal hide fade in" style="display: block; display:none ">
