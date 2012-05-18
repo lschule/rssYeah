@@ -44,7 +44,7 @@ class FeedsController < ApplicationController
     respond_to do |format|
       if @feed.save
         @feed.update_articles();
-        format.html { redirect_to @feed, :notice => 'Feed was successfully created.' }
+        format.html { redirect_to :feeds, :notice => 'Feed was successfully created.' }
         format.json { render :json => @feed, :status => :created, :location => @feed }
       else
         format.html { render :action => "new" }

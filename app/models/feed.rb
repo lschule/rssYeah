@@ -50,7 +50,7 @@ Feedzirra::Feed.add_feed_class(Feedzirra::Parser::NatureRSS)
 class Feed < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :articles
-  
+    
   def self.load_all_feeds()
     Feed.all.each do |feed|
       feed.update_articles();      
@@ -58,9 +58,11 @@ class Feed < ActiveRecord::Base
   end
   
   def update_articles()
-    #Feedzirra::Feed.add_common_feed_entry_element("dc:date", :as => :published)
     feedzirra = Feedzirra::Feed.fetch_and_parse(self.url)
-    add_articles(feedzirra.entries)
+    if (feedzirra != 0)
+      add_articles(feedzirra.entries)
+    end
+    
   end
 
   def add_articles(entries)

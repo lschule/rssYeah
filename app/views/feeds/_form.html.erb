@@ -1,29 +1,26 @@
-<%= form_for(@feed) do |f| %>
-  <% if @feed.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
 
-      <ul>
-      <% @feed.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<%= form_for(@feed, :html => { :class => "form-horizontal"}) do |f| %>
+  <% if @feed.errors.any? %>
+    <div class="alert alert-block">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <h4 class="alert-heading">Oooops</h4>
+	  <% @feed.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
       <% end %>
-      </ul>
-    </div>
+	</div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :shortname %><br />
-    <%= f.text_field :shortname %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="control-group">
+<%= f.text_field :name, :placeholder => "Feed name", :class => "span3 bottom-10px", :required => true %>
+</div>
+  <div class="control-group">
+<%= f.text_field :shortname, :placeholder => "Feed shortname", :class => "span3 bottom-10px", :required => true %>
+</div>
+  <div class="control-group">
+<%= f.url_field :url, :placeholder => "Feed Url", :class => "span3 bottom-10px", :required => true   %>
+</div>
+  <div class="control-group">
+</div>
+<%= f.submit "Add this feed to the list", :class => 'btn btn-primary btn-large' %>
+
 <% end %>
