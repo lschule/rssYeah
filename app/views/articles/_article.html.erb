@@ -21,7 +21,7 @@
 		<h5>
 			<%= article.feed_short %>
 			<% unless article.author.nil?  %>	
-				, by <%= article.author %>
+				, by <%= article.author.gsub(/<\/?[^>]*>/, "") %>
 			<% end %>	
 		</h5>
 	</div>

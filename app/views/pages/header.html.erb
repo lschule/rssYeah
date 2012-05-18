@@ -8,4 +8,10 @@
 				  </ul>
 				</div>
 <% end %>
-<h1 class="page-header"><a id="go-home" href="/"><i class="icon-star-empty"></i>rssYeah</a></h1>
+<h1 class="page-header">
+	<% if current_user %>
+		<%= link_to raw("<i class='icon-star-empty'></i>rssYeah"), :channels, :id => "go-home" %>
+	<% else %>
+		<i class='icon-star-empty'></i>rssYeah
+	<% end %>
+</h1>
