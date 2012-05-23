@@ -65,11 +65,12 @@
 					</div>
     </div>
 <div>
-<%= form_tag articles_path, method: :get do %>
-		<h3>Search</h3>
-	  
-	    <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :id => "search-articles" %>
+  <%= form_tag articles_path, method: :get do %>
+    <h3>Search</h3>
+    <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :id => "search-articles" %>
 	<% end %>
+  <p>Tip: You can construct complex searches using AND, OR and wildcards. The default join opterator is <code>OR</code>.</p>
+  <p>Example:<br/><code>(epidemi* AND (network OR graph OR contact)) OR (drosophila AND (! gene))</code></p>
 </div>
 </div>
 </div>
