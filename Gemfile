@@ -27,8 +27,7 @@ group :development do
   gem 'sqlite3'
 end
 group :production do
-  gem 'sqlite3'
-  gem 'mysql'
+  gem 'ruby-mysql'
 end
 
 gem 'jquery-rails'
@@ -68,3 +67,5 @@ gem 'whenever'
 
 # database export
 gem 'yaml_db'
+gem 'mysql'
+
