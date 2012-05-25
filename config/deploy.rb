@@ -7,7 +7,9 @@ set :applicationdir, '/Users/gabriel/Projects/rssYeah-prod'
 
 set :application, 'rssYeah'
 set :scm, 'git'
+set :scm_verbose, true
 set :repository, 'git://github.com/lschule/rssYeah.git'
+#set :repository, "ssh://#{user}@#{domain}/Users/gabriel/Projects/rssYeah"
 set :branch, 'master'
 set :git_shallow_clone, 1
 
@@ -18,9 +20,9 @@ role :db,  domain, :primary => true
 
 # deploy config
 set :deploy_to, applicationdir
-set :deploy_via, :remote_cache
+set :deploy_via, :export
 
-#set :bundle_cmd, '/opt/local/bin/bundle'
+set :bundle_cmd, '/opt/local/bin/bundle'
 
 # Passenger
 namespace :deploy do
