@@ -27,7 +27,7 @@ group :development do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
+  gem 'mysql'
 end
 
 gem 'jquery-rails'
@@ -42,7 +42,8 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+gem 'rake'
 
 # To use debugger
 # gem 'ruby-debug'
@@ -63,3 +64,6 @@ gem 'kaminari'
 
 # cron
 gem 'whenever'
+
+# database export
+gem 'yaml_db'
