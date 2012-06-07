@@ -67,5 +67,5 @@ gem 'whenever'
 
 # database export
 gem 'yaml_db'
-gem 'mysql'
+#gem 'mysql'
 
