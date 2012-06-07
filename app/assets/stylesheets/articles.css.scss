@@ -4,6 +4,28 @@
 .article{
 padding:8px;
 border-top:1px solid #bcbcbc;
+clear:both;
+}
+
+.article-header{
+	padding: 6px 0px 0px 0px;
+}
+.article-header h3{
+line-height:20px;
+padding-left:74px;
+}
+
+.article-header h5{
+color:#8b8b8b;
+padding-left:74px;
+}
+
+.article-content{
+
+}
+
+.article-summary{
+padding-top:12px;
 }
 
 .article-actions {
@@ -27,26 +49,12 @@ border-top:1px solid #bcbcbc;
 	line-height:29px;
 }
 
-.article-header{
-	padding: 6px 0px 0px 0px;
+.article-footer{
+clear:both;
 }
 
-.article-header h3{
-line-height:20px;
-padding-left:74px;
-}
-
-.article-header h5{
-color:#8b8b8b;
-padding-left:74px;
-}
-
-.article-content{
-padding-left:74px;
-}
-
-.article-summary{
-padding-top:12px;
+.article-footer .article-actions{
+margin-top:10px;
 }
 
 .unread{
@@ -61,4 +69,5 @@ background-color:#fcedd8;
 	clear:both;
 	margin-top:24px;
 	margin-bottom:16px;
+	margin-left:10px;
 }

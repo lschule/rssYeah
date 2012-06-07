@@ -38,6 +38,8 @@ $("i.heart").click(function(e){
 	$.getJSON('/articles/' + article_id + '/toggle_heart', function(data) {});
 	update_last_access();
 	$(this).toggleClass('icon-heart-empty').toggleClass('icon-heart');
+	$("#b_"+$(this).attr('id')).toggleClass('icon-heart-empty').toggleClass('icon-heart');
+	
 	$(this).parents('div.article').addClass('read').removeClass('unread').removeClass('new');
 })
 
@@ -46,6 +48,17 @@ $("a.mail").click(function(e){
 	$.getJSON('/articles/' + article_id + '/mark_read', function(data) {});
 	update_last_access();
 	$(this).parents('div.article').addClass('read').removeClass('unread').removeClass('new');
+})
+//bottom heart adn mail icons
+$("i.b_heart").click(function(e){
+	var heart_id = $(this).attr('id').substr(2);
+	$("#"+heart_id).click();
+
+})
+$("a.b_mail").click(function(e){
+	var mail_id = $(this).attr('id').substr(2);
+	$(this).attr("href",$("#"+mail_id).attr('href'))
+	return true;
 })
 
 $("h3.article-title").click(function(e){
@@ -90,7 +103,7 @@ $(".edit-channel").click(function(e){
 	var action = $("#edit_channel_form").attr("action");
 	$("#edit_channel_form").attr("action", action.concat(channel_id));
 	$("#edit_channel_container #name").val($("#channel-name"+channel_id).html());
-	$("#edit_channel_container #query").val($("#channel-query"+channel_id).val());
+	$("#edit_channel_container #query").val($("#channel-query"+channel_id).html());
 	$("#edit_channel_container #id").val(channel_id);
 })
 

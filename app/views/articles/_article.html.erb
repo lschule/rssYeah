@@ -29,7 +29,14 @@
 		<div class="article-summary">
 			<%= raw article.summary  %>
 		</div>
+		<div class="article-footer">
+		
+		<div class="article-actions">
+			<a><i id="b_heart_<%= article.id %>" class="<%= is_hearted(article.id,current_user.id) %> b_heart"></i></a>
+			<a id="b_mail_<%= article.id %>" class="b_mail" target="_blank"><i class="icon-envelope"></i></a>
+		</div>
 		<a href="<%= article.url %>" class="btn btn-primary go-to-article" target="_blank"><i class='icon-arrow-right'></i>&nbsp;<b>Go to Article</b></a>
-		<div style="height:14px">&nbsp;</div>
+		<div style="clear:both">&nbsp;</div>
+		</div>
 	</div>
   </div>

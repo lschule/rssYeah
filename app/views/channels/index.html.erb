@@ -67,7 +67,7 @@
 					<a data-toggle="modal" href="#delete-channel-modal" id="channel_<%=  channel.id %>" class="delete-channel"><i class='icon-trash'></i></a>
 					<a data-toggle="modal" href="#edit-channel-modal" id="e_channel_<%=  channel.id %>" class="edit-channel"><i class='icon-edit'></i></a>
 				</div>
-				<%= link_to raw('<h3 id="channel-name' + channel.id.to_s + '">' + channel.name + ' <span class="small-query" id="channel-query'+channel.id.to_s+'">'+channel.query+'</span></h3>'), channel_path(channel) %>
+				<%= link_to raw('<h3><span id="channel-name' + channel.id.to_s + '">' + channel.name + '</span> <span class="small-query" id="channel-query'+channel.id.to_s+'">'+channel.query+'</span></h3>'), channel_path(channel) %>
 				<h4><%=  channel.count.to_s %> new items</h4>
 			</div>
 		<% end %>

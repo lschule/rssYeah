@@ -2,6 +2,11 @@
 	<div class="navbar-inner">
 	    <div class="container" style="width: auto;">
 	      <a class="brand" href="#">We currently have the following feeds</a>
+		  <ul class="nav">
+				<li>
+					<%= link_to raw('<i class="icon-plus-sign"></i>&nbsp;<b>Add a new feed</b>'), new_feed_path %>
+				</li>	
+        	</ul>
 			<ul class="nav pull-right">
 				<li><%= link_to raw("<i class='icon-arrow-left'></i>&nbsp;<b>Go back to your Dashboard</b>"), :channels  %></li>
 	        </ul>
@@ -22,5 +27,4 @@
 	<% end %>
 </div>
 <% end %>
-
-<%= link_to 'New Feed', new_feed_path, :class => 'btn btn-primary' %>
+<%= render :partial => 'pages/content_bottom'%>
