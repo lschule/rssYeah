@@ -13,6 +13,30 @@
 			  <input type="hidden" id="channel-id-to-delete"></input>
 	</div>
 </div>
+
+<div id="edit-channel-modal" class="modal hide fade in" style="display:none ">
+	<div class="modal-header">
+              <a class="close" data-dismiss="modal">×</a>
+              <h3>Edit your channel</h3>
+    </div>
+    <%= form_tag("/saved_searches/", :id =>"edit_channel_form" , :method => "PUT") do %>	
+		<div class="modal-body" id="edit_channel_container">
+			<h4>You can edit the name and the query of your channel</h4>
+			<br/>
+			<label for="name">Name: </label><%= text_field_tag :name,"", :required => true %>
+			<br/>
+			<label for="query">Query: </label><%= text_field_tag :query,"", :required => true %>
+			<%= hidden_field_tag :id %>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn btn-large" data-dismiss="modal">Cancel</a>
+			<%= submit_tag "Save your channel", :class => 'btn btn-primary btn-large' %>	
+
+		</div>
+	<% end %>
+</div>
+
+
 <div id="save-search-modal" class="modal hide fade in" style="display:none ">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
@@ -20,9 +44,10 @@
     </div>
 	<%= form_tag({:controller => "saved_searches", :action => "create"}, :method => "post") do %>	
 		<div class="modal-body">
+			<h4>Choose a name for your channel</h4>
+			<label for="name">Name: </label><%= text_field_tag :name,"", :required => true %>
 			<h4>You will create a channel with the following query</h4>
-			<br/>
-			<%= text_field_tag :query %>
+			<label for="query">Query: </label><%= text_field_tag :query,"", :required => true %>
 		</div>
 		<div class="modal-footer">
 			<a href="#" class="btn btn-large" data-dismiss="modal">Cancel</a>
@@ -40,8 +65,10 @@
 			<div id ="channel-container_<%=  channel.id %>">
 				<div class="pull-right">
 					<a data-toggle="modal" href="#delete-channel-modal" id="channel_<%=  channel.id %>" class="delete-channel"><i class='icon-trash'></i></a>
+					<a data-toggle="modal" href="#edit-channel-modal" id="e_channel_<%=  channel.id %>" class="edit-channel"><i class='icon-edit'></i></a>
 				</div>
-				<%= link_to raw('<h3 id="channel-title_' + channel.id.to_s + '">' + channel.query + '</h3>'), channel_path(channel) %>
+				<%= link_to raw('<h3 id="channel-name' + channel.id.to_s + '">' + channel.name + '</h3>'), channel_path(channel) %>
+				<input type="hidden" id="channel-query<%= channel.id.to_s %>" value="<%= channel.query %>">
 				<h4><%=  channel.count.to_s %> new items</h4>
 			</div>
 		<% end %>

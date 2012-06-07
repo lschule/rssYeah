@@ -42,15 +42,17 @@
 		              <a class="close" data-dismiss="modal">×</a>
 		              <h3>Save this search</h3>
 		            </div>
+					<%= form_tag({:controller => "saved_searches", :action => "create"}, :method => "post") do %>
 		            <div class="modal-body">
 		              <h4>You will create a channel with the following query</h4>
-					  <h2 id="channel-query"><%= params[:query] %></h2>
+						<label for="name">Query: </label><%= text_field_tag :query, params[:query], :required => true %>
+					
+						
+					  <h4>Thanks to choose a name for this channel</h4>
+						<label for="name">Name: </label><%= text_field_tag :name,"", :required => true %>
 		            </div>
 		            <div class="modal-footer">
-					<%= form_tag({:controller => "saved_searches", :action => "create"}, :method => "post") do %>	
-
-					  <%= hidden_field_tag :query, params[:query] %>
-		              <a href="#" class="btn btn-large" data-dismiss="modal">Cancel</a>
+						<a href="#" class="btn btn-large" data-dismiss="modal">Cancel</a>
 					  <%= submit_tag "Add this feed to the list", :class => 'btn btn-primary btn-large' %>	
 					<% end %>
 					</div>

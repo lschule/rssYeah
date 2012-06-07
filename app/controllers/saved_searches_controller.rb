@@ -46,6 +46,7 @@ class SavedSearchesController < ApplicationController
     else
       @saved_search = SavedSearch.new();
       @saved_search.query = params[:query];
+      @saved_search.name = params[:name];
     end
     @saved_search.user = current_user
     @saved_search.last_access = DateTime.new(1990,1,1)
@@ -66,8 +67,10 @@ class SavedSearchesController < ApplicationController
     @saved_search = SavedSearch.find(params[:id])
 
     respond_to do |format|
-      if @saved_search.update_attributes(params[:saved_search])
-        format.html { redirect_to @saved_search, notice: 'Saved search was successfully updated.' }
+      @saved_search.name = params[:name]
+      @saved_search.query = params[:query]
+      if @saved_search.save
+        format.html { redirect_to :channels, notice: 'Your channel was successfully saved.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -85,6 +85,18 @@ $(".delete-channel").click(function(e){
 	$("#channel-id-to-delete").val(channel_id);
 })
 
+$(".edit-channel").click(function(e){
+	var channel_id = $(this).attr('id').substr(10);
+	var action = $("#edit_channel_form").attr("action");
+	$("#edit_channel_form").attr("action", action.concat(channel_id));
+	$("#edit_channel_container #name").val($("#channel-name"+channel_id).html());
+	$("#edit_channel_container #query").val($("#channel-query"+channel_id).val());
+	$("#edit_channel_container #id").val(channel_id);
+})
+
+
+
+
 $("#confirm-delete").click(function(e){
 	var channel_id = $("#channel-id-to-delete").val();
 	$.ajax({

@@ -22,13 +22,26 @@ line-height:19px;
 margin-bottom:12px;
 }
 
-.delete-channel{
+.delete-channel, .edit-channel{
 font-size:20px;
 padding-top:3px;
 margin-left:8px;
 color:#787878;
 }
 
-.delete-channel:hover{
+.delete-channel:hover, .edit-channel:hover{
 	text-decoration:none;
+}
+
+.modal-body label{
+line-height:28px;
+margin-right:10px;
+float:left;
+clear:left;
+margin-top:10px;
+margin-bottom:10px;
+}
+.modal-body input{
+	margin-top:10px;
+	margin-bottom:10px;
 }
