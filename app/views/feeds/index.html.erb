@@ -1,20 +1,25 @@
-<div class="well">
-  <!--<%= link_to raw("<i class='icon-arrow-left'></i>&nbsp;<b>Go back</b>"), :back, :class => "btn btn-primary pull-right"  %>-->
-<%= link_to raw("<i class='icon-arrow-left'></i>&nbsp;<b>Dashboard</b>"), :channels, :class => "btn btn-primary pull-right"   %>
-<h2>We currently have the following feeds</h2>
-</div>	
-
+<div class="navbar navbar-static">
+	<div class="navbar-inner">
+	    <div class="container" style="width: auto;">
+	      <a class="brand" href="#">We currently have the following feeds</a>
+			<ul class="nav pull-right">
+				<li><%= link_to raw("<i class='icon-arrow-left'></i>&nbsp;<b>Go back to your Dashboard</b>"), :channels  %></li>
+	        </ul>
+		</div>
+	</div>
+</div>
 <% @feeds.each do |feed| %>
-<div class="row" style="border-top: 1px solid #BCBCBC;padding-top:3px;padding-bottom:3px;">
-	<div class="span9">
+<div class="row feed-item">
+	<div class="span8">
 	<h3><%= feed.name %> <small><%= feed.url %></small></h3>
 	</div>
-	<div class="span3 feed-action">
 		<% if current_user %>
+	<div class="span3 pull-right feed-action">
+	
 			<a href="#" id="add_<%= feed.id %>" class="btn btn-primary add-feed <%= check_if_disabled(false,current_user,feed) %>"><i class="icon-plus"></i>&nbsp;Add</a>
 			<a href="#" id="rem_<%= feed.id %>" class="btn btn-primary remove-feed <%= check_if_disabled(true,current_user,feed) %>"><i class="icon-minus"></i>&nbsp;Remove</a>
-		<% end %>
 	</div>
+	<% end %>
 </div>
 <% end %>
 

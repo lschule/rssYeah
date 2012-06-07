@@ -5,3 +5,15 @@
 .feed-action a{
 width:70px;
 }
+.feed-item{
+	padding-bottom:10px;
+	margin-left:0px;
+}
+
+.feed-item:nth-child(2n){
+	background-color:#DEF1F6;
+}
+
+.feed-item h3{
+	margin-top:10px;
+}
