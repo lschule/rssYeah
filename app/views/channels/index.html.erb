@@ -102,9 +102,22 @@
 </div>
 <div class="span4">
 	<div class="well">
-<h2>Other actions</h2>
-	<a href="feeds" class="btn btn-primary  btn-large"><i class='icon-arrow-right'></i>&nbsp;Manage your feeds</a>
+    <h2>Other actions</h2>
+    <a href="feeds" class="btn btn-primary  btn-large"><i class='icon-arrow-right'></i>&nbsp;Manage your feeds</a>
+  </div>
 </div>
 
+<div class="span4">
+	<div class="well">
+    <h2>Recommendations</h2>
+		<% @recommendations.each do |recommendation| %>
+      <div>
+        <p><em>From <%= recommendation.from.username =%></em><br />
+        <strong><%= recommendation.article.name =%></strong></p>
+      </div>
+    <% end %>
+   </div>
 </div>
+
+
 </div>

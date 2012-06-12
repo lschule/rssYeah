@@ -1,5 +1,7 @@
 RssYeah::Application.routes.draw do
 
+  resources :recommendations
+
   resources :saved_searches do
     member do
       get :update_last_access

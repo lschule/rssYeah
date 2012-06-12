@@ -1,0 +1,18 @@
+<div class="navbar navbar-static">
+  <div class="navbar-inner">
+    <div class="container" style="width: auto;">
+      <a class="brand" href="#">Your recommended articles</a>
+      <ul class="nav pull-right">
+        <li><%= link_to raw("<i class='icon-arrow-left'></i>&nbsp;<b>Go back to your Dashboard</b>"), :channels  %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<% unless @articles.length == 0 %>
+  <div class="article-container">
+    <%= render :partial => 'articles/article', :collection =>  @articles, :locals => {:last_access => Time.now.strftime("%Y-%m-%d")} %>
+  </div>
+<% else %>
+  <i class='icon-exclamation-sign pull-left' style="font-size:46px;"></i>
+  <h2 style="line-height:34px;padding-left:40px">Seems like we found nothing. Add feeds or change your search criteria and enjoy the read!</h2>
+<% end %>
