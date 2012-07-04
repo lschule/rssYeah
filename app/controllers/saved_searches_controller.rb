@@ -7,7 +7,7 @@ class SavedSearchesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @saved_searches }
+      format.json { render :json => @saved_searches }
     end
   end
 
@@ -18,7 +18,7 @@ class SavedSearchesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @saved_search }
+      format.json { render :json => @saved_search }
     end
   end
 
@@ -29,7 +29,7 @@ class SavedSearchesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @saved_search }
+      format.json { render :json => @saved_search }
     end
   end
 
@@ -52,11 +52,11 @@ class SavedSearchesController < ApplicationController
     @saved_search.last_access = DateTime.new(1990,1,1)
     respond_to do |format|
       if @saved_search.save
-        format.html { redirect_to channel_url(@saved_search), notice: 'Your channel was successfully created.' }
-        format.json { render json: @saved_search, status: :created, location: @saved_search }
+        format.html { redirect_to channel_url(@saved_search), :notice => 'Your channel was successfully created.' }
+        format.json { render :json => @saved_search, :status => :created, :location => @saved_search }
       else
-        format.html { render action: "new" }
-        format.json { render json: @saved_search.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @saved_search.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -70,11 +70,11 @@ class SavedSearchesController < ApplicationController
       @saved_search.name = params[:name]
       @saved_search.query = params[:query]
       if @saved_search.save
-        format.html { redirect_to :channels, notice: 'Your channel was successfully saved.' }
+        format.html { redirect_to :channels, :notice => 'Your channel was successfully saved.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @saved_search.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @saved_search.errors, :status => :unprocessable_entity }
       end
     end
   end

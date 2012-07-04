@@ -10,7 +10,7 @@ class UserArticlesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       #format.html { render :template => 'articles/index' }
-      format.json { render json: @user_articles }
+      format.json { render :json => @user_articles }
     end
   end
 
@@ -21,7 +21,7 @@ class UserArticlesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @user_article }
+      format.json { render :json => @user_article }
     end
   end
 
@@ -32,7 +32,7 @@ class UserArticlesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @user_article }
+      format.json { render :json => @user_article }
     end
   end
 
@@ -48,11 +48,11 @@ class UserArticlesController < ApplicationController
 
     respond_to do |format|
       if @user_article.save
-        format.html { redirect_to @user_article, notice: 'User article was successfully created.' }
-        format.json { render json: @user_article, status: :created, location: @user_article }
+        format.html { redirect_to @user_article, :notice => 'User article was successfully created.' }
+        format.json { render :json => @user_article, :status => :created, :location => @user_article }
       else
-        format.html { render action: "new" }
-        format.json { render json: @user_article.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @user_article.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,11 +64,11 @@ class UserArticlesController < ApplicationController
 
     respond_to do |format|
       if @user_article.update_attributes(params[:user_article])
-        format.html { redirect_to @user_article, notice: 'User article was successfully updated.' }
+        format.html { redirect_to @user_article, :notice => 'User article was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @user_article.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @user_article.errors, :status => :unprocessable_entity }
       end
     end
   end

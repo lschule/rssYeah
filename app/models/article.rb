@@ -8,7 +8,7 @@ class Article < ActiveRecord::Base
   include Tire::Model::Callbacks
 
   def self.search(params)
-    tire.search(load: true, :page => params[:page], :per_page => 30) do
+    tire.search(load :true, :page => params[:page], :per_page => 30) do
       #query { string params[:query], default_operator: "AND" } if params[:query].present?
       #filter :range, published_at: {lte: Time.zone.now}
       query do
