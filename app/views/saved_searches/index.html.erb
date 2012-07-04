@@ -18,7 +18,7 @@
     <td><%= link_to 'View Articles', channel_path(saved_search) %></td>
     <td><%= link_to 'Show', saved_search_path(saved_search) %></td>
     <td><%= link_to 'Edit', edit_saved_search_path(saved_search) %></td>
-    <td><%= link_to 'Destroy', saved_search, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', saved_search, confirm: 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

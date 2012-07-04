@@ -19,7 +19,7 @@
     <td><%= user_article.heart %></td>
     <td><%= link_to 'Show', user_article %></td>
     <td><%= link_to 'Edit', edit_user_article_path(user_article) %></td>
-    <td><%= link_to 'Destroy', user_article, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', user_article, confirm: 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -91,7 +91,7 @@
 					</div>
     </div>
 <div>
-  <%= form_tag articles_path, method: :get do %>
+  <%= form_tag articles_path, :method => :get do %>
     <h3>Search</h3>
     <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :id => "search-articles" %>
 	<% end %>

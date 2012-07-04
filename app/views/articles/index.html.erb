@@ -22,7 +22,7 @@
           </li>
         </ul>
 
-        <%= form_tag articles_path, method: :get, class: :"navbar-search pull-left" do %>
+        <%= form_tag articles_path, :method => :get, class: :"navbar-search pull-left" do %>
 
 			    <%= text_field_tag :query, params[:query], :placeholder => 'Search articles', :class => "search-query span3"  %>
 			<% end %>
