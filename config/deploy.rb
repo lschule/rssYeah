@@ -7,7 +7,7 @@ set :keep_releases,     5
 set :application,       'rssYeah'
 set :user,              'rssyeah'
 set :domain,            'uwis-cx-dock-13-225.ethz.ch'
-set :applicationdir,    '/Users/rssyeah/rssyeah'
+set :applicationdir,    '/home/rssyeah/rssyeah'
 set :runner,            'rssyeah'
 set :scm,               'git'
 set :scm_verbose,       true
