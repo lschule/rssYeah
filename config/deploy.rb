@@ -23,7 +23,7 @@ role :db,  domain, :primary => true
 set :deploy_to, applicationdir
 set :deploy_via, :export
 
-set :bundle_cmd, '/opt/local/bin/bundle'
+set :bundle_cmd, 'bundle'
 
 ssh_options[:paranoid]    = false
 default_run_options[:pty] = true
