@@ -11,7 +11,7 @@ listen "/tmp/shop.socket", :backlog => 64
 timeout 30
 # feel free to point this anywhere accessible on the filesystem
 user 'rssyeah', 'staff'
-shared_path = “/home/rssyeah/rssyeah/shared”
+shared_path = "/home/rssyeah/rssyeah/shared"
 pid "#{shared_path}/pids/unicorn.pid"
 stderr_path "#{shared_path}/log/unicorn.stderr.log"
 stdout_path "#{shared_path}/log/unicorn.stdout.log"
