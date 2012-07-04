@@ -47,11 +47,11 @@ class RecommendationsController < ApplicationController
 
     respond_to do |format|
       if @recommendation.save
-        format.html { redirect_to @recommendation, notice: 'Recommendation was successfully created.' }
-        format.json { render :json => @recommendation, status: :created, location: @recommendation }
+        format.html { redirect_to @recommendation, :notice => 'Recommendation was successfully created.' }
+        format.json { render :json => @recommendation, :status => :created, :location => @recommendation }
       else
-        format.html { render action: "new" }
-        format.json { render :json => @recommendation.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @recommendation.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +63,11 @@ class RecommendationsController < ApplicationController
 
     respond_to do |format|
       if @recommendation.update_attributes(params[:recommendation])
-        format.html { redirect_to @recommendation, notice: 'Recommendation was successfully updated.' }
+        format.html { redirect_to @recommendation, :notice => 'Recommendation was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render :json => @recommendation.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @recommendation.errors, :status => :unprocessable_entity }
       end
     end
   end
