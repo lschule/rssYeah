@@ -30,10 +30,14 @@ default_run_options[:pty] = true
 
 # Passenger
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  task :start do 
+    sudo "/etc/init.d/unicorn start" 
+  end
+  task :stop do 
+    sudo "/etc/init.d/unicorn stop"
+  end
+  task :restart do
+    sudo "/etc/init.d/unicorn reload"
   end
 end
 

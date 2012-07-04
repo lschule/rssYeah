@@ -31,5 +31,5 @@ production:
   timeout: 5000
   username: rssyeah
   password: yeahbaby
-  socket: /opt/local/var/run/mysql5/mysqld.sock
+  socket: /var/run/mysqld/mysqld.sock
 
