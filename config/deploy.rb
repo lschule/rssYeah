@@ -1,3 +1,8 @@
+# RVM
+require 'rvm/capistrano'
+set :rvm_ruby_string, 'ruby-1.9.3-p125@rails-3.2'
+set :rvm_install_type, :stable
+
 require 'bundler/capistrano'
 
 set :use_sudo, false
@@ -28,8 +33,15 @@ set :bundle_cmd, 'bundle'
 ssh_options[:paranoid]    = false
 default_run_options[:pty] = true
 
-# Passenger
+before 'deploy:setup', 'rvm:install_rvm'
+before 'deploy:setup', 'rvm:install_ruby'
+
+# ugly workaround for bug https://github.com/capistrano/capistrano/issues/81
+before "deploy:assets:precompile", "bundle:install"
+
+# Unicorn
 namespace :deploy do
+  desc "Deploy your application"
   task :start do 
     sudo "/etc/init.d/unicorn start" 
   end
@@ -44,3 +56,4 @@ end
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
 
+load 'deploy/assets'
