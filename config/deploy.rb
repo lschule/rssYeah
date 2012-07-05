@@ -39,18 +39,18 @@ before 'deploy:setup', 'rvm:install_ruby'
 before "deploy:assets:precompile", "bundle:install"
 
 # Unicorn
-namespace :deploy do
-  desc "Deploy your application"
-  task :start do 
-    sudo "/etc/init.d/unicorn start" 
-  end
-  task :stop do 
-    sudo "/etc/init.d/unicorn stop"
-  end
-  task :restart do
-    sudo "/etc/init.d/unicorn reload"
-  end
-end
+#namespace :deploy do
+#  desc "Deploy your application"
+#  task :start do 
+#    sudo "/etc/init.d/unicorn start" 
+#  end
+#  task :stop do 
+#    sudo "/etc/init.d/unicorn stop"
+#  end
+#  task :restart do
+#    sudo "/etc/init.d/unicorn reload"
+#  end
+#end
 
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
