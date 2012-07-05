@@ -1,9 +1,8 @@
 # RVM
-require 'rvm/capistrano'
 set :rvm_ruby_string, 'ruby-1.9.3-p125@rails-3.2'
 set :rvm_install_type, :stable
 
-require 'bundler/capistrano'
+set :bundle_without, [:development]
 
 set :use_sudo, false
 
@@ -56,4 +55,9 @@ end
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
 
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require 'rvm/capistrano'
+require 'bundler/capistrano'
+require 'capistrano-unicorn'
+require 'capistrano-file_db'
 load 'deploy/assets'
