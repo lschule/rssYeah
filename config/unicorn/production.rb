@@ -1,16 +1,17 @@
-APP_ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
+app_root = "/home/rssyeah/rssyeah"
+app_path = "#{app_root}/current"
+shared_path = "#{app_root}/shared"
 
 worker_processes 4
-working_directory APP_ROOT
-
 preload_app true
-
 timeout 30
 listen "/tmp/rssYeah.socket", :backlog => 64
-
 user 'rssyeah', 'staff'
 
-shared_path = "/home/rssyeah/rssyeah/shared"
+working_directory app_path
+
+rails_env = ENV['RAILS_ENV'] || 'production'
+
 pid "#{shared_path}/pids/unicorn.pid"
 stderr_path "#{shared_path}/log/unicorn.stderr.log"
 stdout_path "#{shared_path}/log/unicorn.stdout.log"

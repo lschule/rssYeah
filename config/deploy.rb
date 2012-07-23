@@ -16,6 +16,7 @@ set :runner,            'rssyeah'
 set :scm,               'git'
 set :scm_verbose,       true
 set :repository,        'git://github.com/lschule/rssYeah.git'
+#set :repository,        'ssh://uwis-cx-dock-11-305.ethz.ch/~/Projects/rssYeah'
 set :branch,            'master'
 
 # roles (servers)

@@ -25,6 +25,12 @@ end
 
 group :development do
   gem 'sqlite3'
+
+  # Deploy with Capistrano
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+  gem 'capistrano-unicorn', :require => false
+  gem 'capistrano-file_db'
 end
 group :production do
   gem 'mysql'
@@ -41,12 +47,6 @@ gem 'jquery-rails'
 
 # Use unicorn as the app server
 gem 'unicorn'
-
-# Deploy with Capistrano
-gem 'capistrano'
-gem 'rvm-capistrano'
-gem 'capistrano-unicorn'
-gem 'capistrano-file_db'
 
 gem 'rake'
 
