@@ -55,6 +55,14 @@ before "deploy:assets:precompile", "bundle:install"
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
 
+after "deploy:symlink", "deploy:update_crontab"
+namespace :deploy do
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && bundle exec whenever --update-crontab #{application}"
+  end
+end
+
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require 'rvm/capistrano'
 require 'bundler/capistrano'
