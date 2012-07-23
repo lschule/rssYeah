@@ -1,5 +1,5 @@
 # RVM
-set :rvm_ruby_string, 'ruby-1.9.3-p125@rails-3.2'
+set :rvm_ruby_string, 'ruby-1.9.3-p194'
 set :rvm_install_type, :stable
 
 set :bundle_without, [:development]
@@ -16,7 +16,6 @@ set :runner,            'rssyeah'
 set :scm,               'git'
 set :scm_verbose,       true
 set :repository,        'git://github.com/lschule/rssYeah.git'
-#set :repository,        'ssh://uwis-cx-dock-11-305.ethz.ch/~/Projects/rssYeah'
 set :branch,            'master'
 
 # roles (servers)

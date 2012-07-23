@@ -12,6 +12,9 @@ working_directory app_path
 
 rails_env = ENV['RAILS_ENV'] || 'production'
 
+ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', File.dirname(__FILE__))
+require 'bundler/setup'
+
 pid "#{shared_path}/pids/unicorn.pid"
 stderr_path "#{shared_path}/log/unicorn.stderr.log"
 stdout_path "#{shared_path}/log/unicorn.stdout.log"
@@ -25,7 +28,7 @@ before_fork do |server, worker|
 
   # Before forking, kill the master process that belongs to the .oldbin PID.
   # This enables 0 downtime deploys.
-  old_pid = "#{pid}.oldbin"
+  old_pid = app_root + '/shared/pids/unicorn.pid.oldbin'
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
