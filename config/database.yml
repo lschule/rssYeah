@@ -19,17 +19,13 @@ test:
   timeout: 5000
 
 production:
-#  adapter: sqlite3
-#  database: db/production.sqlite3
-#  pool: 5
-#  timeout: 5000
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
-  database: rssYeah
-  pool: 5
-  timeout: 5000
-  username: rssyeah
-  password: yeahbaby
-  socket: /var/run/mysqld/mysqld.sock
+  adapter:   mysql
+  encoding:  utf8
+  reconnect: true
+  database:  rssYeah
+  pool:      5
+  timeout:   5000
+  username:  rssyeah
+  password:  yeahbaby
+  socket:    /var/run/mysqld/mysqld.sock
 
