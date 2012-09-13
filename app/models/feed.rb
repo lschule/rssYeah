@@ -27,6 +27,24 @@ end
 
 module Feedzirra
   module Parser
+    class PLoSRSSEntry
+      include SAXMachine
+      include FeedEntryUtilities
+      element :title
+      element :"feedburner:origLink", :as => :url
+      element :author
+      element :published
+      element :id, :as => :guid
+      element :content, :as => :summary
+      def url
+        @url || @link
+      end
+    end
+  end
+end
+
+module Feedzirra
+  module Parser
     class NatureRSS
       include SAXMachine
       include FeedUtilities
@@ -34,9 +52,7 @@ module Feedzirra
       element :description
       element :link, :as => :url
       elements :item, :as => :entries, :class => NatureRSSEntry
-
       attr_accessor :feed_url
-
       def self.able_to_parse?(xml) #:nodoc:
         /nature\.com/ =~ xml
         #true
@@ -45,7 +61,25 @@ module Feedzirra
   end
 end
 
+module Feedzirra
+  module Parser
+    class PLoSRSS
+      include SAXMachine
+      include FeedUtilities
+      element :title
+      elements :entry, :as => :entries, :class => PLoSRSSEntry
+      attr_accessor :feed_url
+      def self.able_to_parse?(xml) #:nodoc:
+        /plos\.org/ =~ xml
+        #true
+      end
+    end
+  end
+end
+
 Feedzirra::Feed.add_feed_class(Feedzirra::Parser::NatureRSS)
+Feedzirra::Feed.add_feed_class(Feedzirra::Parser::PLoSRSS)
+
 
 class Feed < ActiveRecord::Base
   has_and_belongs_to_many :users

@@ -7,7 +7,7 @@
 				I think you would be interested by this article:%0D%0A
 				%0D%0A
 				<%= article.name %>%0D%0A
-				<%= article.feed_name %> -- <%= article.published.try(:strftime,'%d %b %Y') %>%0D%0A
+				<%= article.feed_name %> -- <%= article.pubDate.try(:strftime,'%d %b %Y') %>%0D%0A
 				<%= URI.escape(article.url) %>%0D%0A
 				%0D%0A
 				I found it using RSSYeah%0D%0A
@@ -16,7 +16,7 @@
 			<i class="icon-envelope"></i></a>
 		</div>
 		<h3 id="title_<%= article.id %>" class="article-title" data-toggle="collapse" data-target="#<%= article.id %>">
-			<%= article.name %><small class="pull-right"><%= article.published.try(:strftime,'%d %b %Y') %></small>
+			<%= article.name %><small class="pull-right"><%= article.pubDate.try(:strftime,'%d %b %Y') %></small>
 		</h3>
 		<h5>
 			<%= article.feed_short %>

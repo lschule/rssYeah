@@ -4,13 +4,13 @@ module ArticlesHelper
     unless @user_article.nil?
       if @user_article.read
         "read"
-      elsif article.published > last_access
+      elsif article.pubDate > last_access
         "new"
       else
         "unread"
       end 
     else
-      if article.published > last_access
+      if article.pubDate > last_access
         "new"
       else
        "unread"

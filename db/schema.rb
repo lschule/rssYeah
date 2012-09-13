@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(:version => 20120612205843) do
   create_table "saved_searches", :force => true do |t|
     t.string   "query"
     t.datetime "last_access"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "name",        :default => "default name"
   end
 
   create_table "smart_categories", :force => true do |t|

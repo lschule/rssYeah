@@ -53,5 +53,23 @@ class Article < ActiveRecord::Base
   def feed_short
     feed.shortname if feed
   end
- 
+
+  def pubDate
+    pubDate = published
+    pubDate = created_at if pubDate.nil? or pubDate > created_at
+    pubDate = Time.now if pubDate.nil?
+    pubDate
+  end
+
+  # Custom JSON to send to elastic search
+  #def to_indexed_json
+  #  {
+  #    :id        => id,
+  #    :name      => name,
+  #    :summary   => summary,
+  #    :published => self.pubDate,
+  #    :author    => author,
+  #    :feed_id   => feed_id
+  #  }.to_json
+  #end
 end
