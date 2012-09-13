@@ -31,11 +31,17 @@ module Feedzirra
       include SAXMachine
       include FeedEntryUtilities
       element :title
+      element :name, :as => :author
       element :"feedburner:origLink", :as => :url
-      element :author
-      element :published
-      element :id, :as => :guid
       element :content, :as => :summary
+      element :published
+      element :id, :as => :entry_id
+      element :issued, :as => :published
+      element :created, :as => :published
+      element :updated
+      element :modified, :as => :updated
+      elements :category, :as => :categories, :value => :term
+      elements :link, :as => :links, :value => :href
       def url
         @url || @link
       end
