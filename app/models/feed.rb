@@ -106,22 +106,24 @@ class Feed < ActiveRecord::Base
   end
 
   def add_articles(entries)
-    entries.each do |entry|
-      if entry.published.nil?
-        entry.published = Time.now.strftime("%Y-%m-%d")
-      end
-      old_article = Article.where(:guid => entry.id).exists?
-      article = Article.find_or_initialize_by_guid(entry.id)
-      article.update_attributes(
-        :name         => entry.title,
-        :summary      => entry.summary,
-        :url          => entry.url,
-        :author       => entry.author,
-        :guid         => entry.id,
-        :feed_id      => self.id
-      )
-      if !old_article
-        article.update_attributes(:published => entry.published)
+    if entries
+      entries.each do |entry|
+        if entry.published.nil?
+          entry.published = Time.now.strftime("%Y-%m-%d")
+        end
+        old_article = Article.where(:guid => entry.id).exists?
+        article = Article.find_or_initialize_by_guid(entry.id)
+        article.update_attributes(
+          :name         => entry.title,
+          :summary      => entry.summary,
+          :url          => entry.url,
+          :author       => entry.author,
+          :guid         => entry.id,
+          :feed_id      => self.id
+        )
+        if !old_article
+          article.update_attributes(:published => entry.published)
+        end
       end
     end
   end
