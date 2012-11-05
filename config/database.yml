@@ -24,7 +24,7 @@ production:
   reconnect: true
   database:  rssYeah
   pool:      5
-  timeout:   2147483
+  timeout:   5000
   username:  rssyeah
   password:  yeahbaby
   socket:    /var/run/mysqld/mysqld.sock
