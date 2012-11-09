@@ -23,7 +23,7 @@ production:
   encoding:  utf8
   reconnect: true
   database:  rssYeah
-  pool:      5
+  pool:      8
   timeout:   5000
   username:  rssyeah
   password:  yeahbaby
