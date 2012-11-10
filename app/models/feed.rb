@@ -100,7 +100,9 @@ class Feed < ActiveRecord::Base
   def update_articles()
     feedzirra = Feedzirra::Feed.fetch_and_parse(self.url)
     if feedzirra
-      add_articles(feedzirra.entries)
+      if feedzirra != 0
+        add_articles(feedzirra.entries)
+      end
     end
   end
 
