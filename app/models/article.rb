@@ -62,14 +62,14 @@ class Article < ActiveRecord::Base
   end
 
   # Custom JSON to send to elastic search
-  #def to_indexed_json
-  #  {
-  #    :id        => id,
-  #    :name      => name,
-  #    :summary   => summary,
-  #    :published => self.pubDate,
-  #    :author    => author,
-  #    :feed_id   => feed_id
-  #  }.to_json
-  #end
+  def to_indexed_json
+    {
+      :id        => id,
+      :name      => name,
+      :summary   => summary,
+      :published => self.pubDate,
+      :author    => author,
+      :feed_id   => feed_id
+    }.to_json
+  end
 end
