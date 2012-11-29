@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(:version => 20120612205843) do
 
   create_table "articles", :force => true do |t|
-    t.string   "name"
+    t.text     "name"
     t.text     "summary"
-    t.string   "url"
+    t.text     "url"
     t.datetime "published"
     t.text     "author"
     t.string   "guid"
