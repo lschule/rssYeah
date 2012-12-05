@@ -92,7 +92,7 @@ class Feed < ActiveRecord::Base
   has_many :articles
     
   def self.load_all_feeds()
-    Feed.all.each do |feed|
+    Feed.where(:fetch => true).each do |feed|
       feed.update_articles();      
     end
   end

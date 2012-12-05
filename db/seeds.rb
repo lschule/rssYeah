@@ -63,4 +63,4 @@ Feed.create([
   { :name => 'arXiv.org q-bio', :shortname => 'arXiv q-bio', :url => 'http://arxiv.org/rss/q-bio' }
 ])
 
-Feed.load_all_feeds
+#Feed.load_all_feeds
