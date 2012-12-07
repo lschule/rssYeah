@@ -33,8 +33,7 @@ group :development do
   gem 'capistrano-file_db'
 end
 group :production do
-  gem 'mysql'
-  gem 'ruby-mysql'
+  gem 'pg'
 end
 
 gem 'jquery-rails'
